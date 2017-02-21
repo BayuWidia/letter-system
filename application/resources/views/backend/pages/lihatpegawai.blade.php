@@ -72,7 +72,7 @@
     <div class="col-md-12">
       <div class="box box-success">
         <div class="box-header">
-          <a href="{{route('pegawai.tambah')}}" class="btn bg-navy btn-flat margin">Tambah Pegawai</a>
+          <a href="{{route('pegawai.tambah')}}" class="btn bg-blue btn-flat margin">Tambah Pegawai</a>
         </div><!-- /.box-header -->
         <div class="box-body">
           <table id="tabelinfo" class="table table-hover">

@@ -44,7 +44,37 @@
         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
       </a>
     </li>
-     <li class="treeview">
+    <li class="treeview">
+      <a href="#" id="colortreemenulihref">
+        <i class="fa fa-envelope"></i>
+        <span>Manajemen Surat Masukan</span>
+        <i class="fa fa-angle-left pull-right"></i>
+      </a>
+      @if(Auth::user()->level=="1" || Auth::user()->level=="2")
+      <ul class="treeview-menu">
+        <li><a href="{{url('admin/lihat-surat-masukan')}}"><i class="fa fa-circle-o"></i> Kelola Surat Masukan</a></li>
+      </ul>
+      @endif
+      <ul class="treeview-menu">
+        <li><a href="{{url('admin/lihat-surat-masukan-all')}}"><i class="fa fa-circle-o"></i> Semua Surat Masukan</a></li>
+      </ul>
+    </li>
+    <li class="treeview">
+      <a href="#" id="colortreemenulihref">
+        <i class="fa fa-envelope-o"></i>
+        <span>Manajemen Surat Keluaran</span>
+        <i class="fa fa-angle-left pull-right"></i>
+      </a>
+      @if(Auth::user()->level=="1" || Auth::user()->level=="2")
+      <ul class="treeview-menu">
+        <li><a href="{{url('admin/lihat-surat-keluaran')}}"><i class="fa fa-circle-o"></i> Kelola Surat Keluaran</a></li>
+      </ul>
+      @endif
+      <ul class="treeview-menu">
+        <li><a href="{{url('admin/lihat-surat-keluaran-all')}}"><i class="fa fa-circle-o"></i> Semua Surat Keluaran</a></li>
+      </ul>
+    </li>
+    <li class="treeview">
       <a href="#" id="colortreemenulihref">
         <i class="fa fa-user-plus"></i>
         <span>Manajemen Pegawai</span>

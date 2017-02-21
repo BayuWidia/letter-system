@@ -54,14 +54,14 @@ class DashboardController extends Controller
       $getsuratmasukan = DB::table('surat_masukan')->select('surat_masukan.*','pegawai.nama_pegawai')
                   ->leftJoin('pegawai', 'surat_masukan.id_pegawai', '=', 'pegawai.id')
                   ->whereRaw('Date(surat_masukan.created_at) = CURDATE()')
-                  ->where('surat_masukan.flag_approved', '1');
+                  ->where('surat_masukan.flag_approved', '1')
                   ->orderby('surat_masukan.created_at', 'desc')
                   ->limit(10)->get();
 
       $getsuratkeluaran = DB::table('surat_keluaran')->select('surat_keluaran.*','pegawai.nama_pegawai')
                   ->leftJoin('pegawai', 'surat_keluaran.id_pegawai', '=', 'pegawai.id')
                   ->whereRaw('Date(surat_keluaran.created_at) = CURDATE()')
-                  ->where('surat_masukan.flag_approved', '1');
+                  ->where('surat_masukan.flag_approved', '1')
                   ->orderby('surat_keluaran.created_at', 'desc')
                   ->limit(10)->get();
 

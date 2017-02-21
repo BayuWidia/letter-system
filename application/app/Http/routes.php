@@ -33,6 +33,7 @@ Route::post('login-process', 'AkunController@loginProcess')->name('login');
 
 //========================================================================================================================
 //Informasi Surat Masukan
+Route::get('admin/lihat-surat-masukan-all', 'SuratMasukanController@lihatall')->name('surat.masukan.lihat.all');
 Route::get('admin/lihat-surat-masukan', 'SuratMasukanController@lihat')->name('surat.masukan.lihat');
 Route::get('admin/tambah-surat-masukan', 'SuratMasukanController@tambah')->name('surat.masukan.tambah');
 Route::post('admin/store-surat-masukan', 'SuratMasukanController@store')->name('surat.masukan.store');
@@ -41,6 +42,20 @@ Route::post('admin/update-surat-masukan', 'SuratMasukanController@update')->name
 Route::get('admin/approved-surat-masukan/{id}', 'SuratMasukanController@flagapproved')->name('surat.masukan.flagapproved');
 Route::get('admin/delete-surat-masukan/{id}', 'SuratMasukanController@delete')->name('surat.masukan.delete');
 Route::get('admin/preview-surat-masukan/{id}', 'SuratMasukanController@preview')->name('surat.masukan.preview');
+// =======================================================================================================================
+
+
+//========================================================================================================================
+//Informasi Surat Keluaran
+Route::get('admin/lihat-surat-keluaran-all', 'SuratKeluaranController@lihatall')->name('surat.keluaran.lihat.all');
+Route::get('admin/lihat-surat-keluaran', 'SuratKeluaranController@lihat')->name('surat.keluaran.lihat');
+Route::get('admin/tambah-surat-keluaran', 'SuratKeluaranController@tambah')->name('surat.keluaran.tambah');
+Route::post('admin/store-surat-keluaran', 'SuratKeluaranController@store')->name('surat.keluaran.store');
+Route::get('admin/edit-surat-keluaran/{id}', 'SuratKeluaranController@edit')->name('surat.keluaran.edit');
+Route::post('admin/update-surat-keluaran', 'SuratKeluaranController@update')->name('surat.keluaran.update');
+Route::get('admin/approved-surat-keluaran/{id}', 'SuratKeluaranController@flagapproved')->name('surat.keluaran.flagapproved');
+Route::get('admin/delete-surat-keluaran/{id}', 'SuratKeluaranController@delete')->name('surat.keluaran.delete');
+Route::get('admin/preview-surat-keluaran/{id}', 'SuratKeluaranController@preview')->name('surat.keluaran.preview');
 // =======================================================================================================================
 
 

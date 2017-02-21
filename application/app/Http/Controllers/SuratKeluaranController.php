@@ -9,76 +9,74 @@ use Image;
 use DB;
 use App\Http\Requests;
 use App\Models\Pegawai;
-use App\Models\SuratMasukan;
+use App\Models\SuratKeluaran;
 
-class SuratMasukanController extends Controller
+class SuratKeluaranController extends Controller
 {
   public function lihat()
   {
     if (Auth::user()->level=="1") {
-      $getsuratmasukan = DB::table('surat_masukan')->select('surat_masukan.*','pegawai.id as id_pegawai','pegawai.nama_pegawai'
-                          ,'skpd.id as id_skpd','skpd.nama_skpd','jabatan.id as id_jabatan','jabatan.nama_jabatan')
-                  ->leftJoin('pegawai', 'surat_masukan.id_pegawai', '=', 'pegawai.id')
+      $getsuratkeluaran = DB::table('surat_keluaran')->select('surat_keluaran.*','pegawai.id as id_pegawai','pegawai.nama_pegawai','skpd.id as id_skpd','skpd.nama_skpd','jabatan.id as id_jabatan','jabatan.nama_jabatan')
+                  ->leftJoin('pegawai', 'surat_keluaran.id_pegawai', '=', 'pegawai.id')
                   ->leftJoin('skpd', 'pegawai.id_skpd', '=', 'skpd.id')
                   ->leftJoin('jabatan', 'pegawai.id_jabatan', '=', 'jabatan.id')
-                  ->orderby('surat_masukan.created_at', 'desc')
-                  ->groupby('surat_masukan.id_pegawai')
+                  ->orderby('surat_keluaran.created_at', 'desc')
+                  ->groupby('surat_keluaran.id_pegawai')
                   ->get();
                   // dd($getsuratmasukan);
     } else if (Auth::user()->level=="2") {
 
-      $getsuratmasukan = DB::table('surat_masukan')->select('surat_masukan.*','pegawai.id as id_pegawai','pegawai.nama_pegawai'
-                          ,'skpd.id as id_skpd','skpd.nama_skpd','jabatan.id as id_jabatan','jabatan.nama_jabatan')
-                  ->leftJoin('pegawai', 'surat_masukan.id_pegawai', '=', 'pegawai.id')
+      $getsuratkeluaran = DB::table('surat_keluaran')->select('surat_keluaran.*','pegawai.id as id_pegawai','pegawai.nama_pegawai','skpd.id as id_skpd','skpd.nama_skpd','jabatan.id as id_jabatan','jabatan.nama_jabatan')
+                  ->leftJoin('pegawai', 'surat_keluaran.id_pegawai', '=', 'pegawai.id')
                   ->leftJoin('skpd', 'pegawai.id_skpd', '=', 'skpd.id')
                   ->leftJoin('jabatan', 'pegawai.id_jabatan', '=', 'jabatan.id')
-                  ->where('surat_masukan.actor', Auth::user()->id_pegawai)
-                  ->orderby('surat_masukan.created_at', 'desc')
-                  ->groupby('surat_masukan.id_pegawai')
+                  ->where('surat_keluaran.actor', Auth::user()->id_pegawai)
+                  ->orderby('surat_keluaran.created_at', 'desc')
+                  ->groupby('surat_keluaran.id_pegawai')
                   ->get();
     } 
 
-    return view('backend/pages/lihatsuratmasukan')->with('getsuratmasukan', $getsuratmasukan);
+    return view('backend/pages/lihatsuratkeluaran')->with('getsuratkeluaran', $getsuratkeluaran);
   }
 
   public function lihatall()
   {
     if (Auth::user()->disposisi=="1") {
-          $getsuratmasukan = DB::table('surat_masukan')->select('surat_masukan.*','pegawai.id as id_pegawai','pegawai.nama_pegawai','skpd.id as id_skpd','skpd.nama_skpd')
-                  ->leftJoin('pegawai', 'surat_masukan.id_pegawai', '=', 'pegawai.id')
+          $getsuratkeluaran = DB::table('surat_keluaran')->select('surat_keluaran.*','pegawai.id as id_pegawai','pegawai.nama_pegawai','skpd.id as id_skpd','skpd.nama_skpd')
+                  ->leftJoin('pegawai', 'surat_keluaran.id_pegawai', '=', 'pegawai.id')
                   ->leftJoin('skpd', 'pegawai.id_skpd', '=', 'skpd.id')
                   ->where([
-                            ['surat_masukan.disposisi_staff', '1'],
-                            ['surat_masukan.flag_approved', '1']
+                            ['surat_keluaran.disposisi_staff', '1'],
+                            ['surat_keluaran.flag_approved', '1']
                           ])
-                  ->orderby('surat_masukan.created_at', 'desc')
-                  ->groupby('surat_masukan.id_pegawai')
+                  ->orderby('surat_keluaran.created_at', 'desc')
+                  ->groupby('surat_keluaran.id_pegawai')
                   ->get();
       } else if (Auth::user()->disposisi=="2") {
-        $getsuratmasukan = DB::table('surat_masukan')->select('surat_masukan.*','pegawai.id as id_pegawai','pegawai.nama_pegawai','skpd.id as id_skpd','skpd.nama_skpd')
-                  ->leftJoin('pegawai', 'surat_masukan.id_pegawai', '=', 'pegawai.id')
+        $getsuratkeluaran = DB::table('surat_keluaran')->select('surat_keluaran.*','pegawai.id as id_pegawai','pegawai.nama_pegawai','skpd.id as id_skpd','skpd.nama_skpd')
+                  ->leftJoin('pegawai', 'surat_keluaran.id_pegawai', '=', 'pegawai.id')
                   ->leftJoin('skpd', 'pegawai.id_skpd', '=', 'skpd.id')
                   ->where([
-                            ['surat_masukan.disposisi_bidang', '1'],
-                            ['surat_masukan.flag_approved', '1']
+                            ['surat_keluaran.disposisi_bidang', '1'],
+                            ['surat_keluaran.flag_approved', '1']
                           ])
-                  ->orderby('surat_masukan.created_at', 'desc')
-                  ->groupby('surat_masukan.id_pegawai')
+                  ->orderby('surat_keluaran.created_at', 'desc')
+                  ->groupby('surat_keluaran.id_pegawai')
                   ->get();
       } else if (Auth::user()->disposisi=="3") {
-        $getsuratmasukan = DB::table('surat_masukan')->select('surat_masukan.*','pegawai.id as id_pegawai','pegawai.nama_pegawai','skpd.id as id_skpd','skpd.nama_skpd')
-                  ->leftJoin('pegawai', 'surat_masukan.id_pegawai', '=', 'pegawai.id')
+        $getsuratkeluaran = DB::table('surat_keluaran')->select('surat_keluaran.*','pegawai.id as id_pegawai','pegawai.nama_pegawai','skpd.id as id_skpd','skpd.nama_skpd')
+                  ->leftJoin('pegawai', 'surat_keluaran.id_pegawai', '=', 'pegawai.id')
                   ->leftJoin('skpd', 'pegawai.id_skpd', '=', 'skpd.id')
                   ->where([
-                            ['surat_masukan.disposisi_sekdis', '1'],
-                            ['surat_masukan.flag_approved', '1']
+                            ['surat_keluaran.disposisi_sekdis', '1'],
+                            ['surat_keluaran.flag_approved', '1']
                           ])
-                  ->orderby('surat_masukan.created_at', 'desc')
-                  ->groupby('surat_masukan.id_pegawai')
+                  ->orderby('surat_keluaran.created_at', 'desc')
+                  ->groupby('surat_keluaran.id_pegawai')
                   ->get();
       }
 
-    return view('backend/pages/lihatsuratmasukanall')->with('getsuratmasukan', $getsuratmasukan);
+    return view('backend/pages/lihatsuratkeluaranall')->with('getsuratkeluaran', $getsuratkeluaran);
   }
 
   public function tambah()
@@ -87,7 +85,7 @@ class SuratMasukanController extends Controller
                 ->where('flag_pegawai', '1')
                 ->whereNotIn('id', [Auth::user()->id_pegawai])->get();
 
-    return view('backend/pages/tambahsuratmasuk')->with('getpegawai', $getpegawai);
+    return view('backend/pages/tambahsuratkeluar')->with('getpegawai', $getpegawai);
   }
 
   public function store(Request $request)
@@ -102,9 +100,10 @@ class SuratMasukanController extends Controller
 
       }
 
-      $new = new SuratMasukan;
+      $new = new SuratKeluaran;
       $new->id_pegawai = $request->pegawai_id;
       $new->id_user = Auth::user()->id;
+      $new->sifat_surat = $request->sifat_surat;
       $new->tanggal_surat = $request->tanggal_surat;
       $new->nomor_surat = $request->nomor_surat;
       $new->perihal = $request->perihal;
@@ -139,20 +138,20 @@ class SuratMasukanController extends Controller
       $new->save();
 
 
-    return redirect()->route('surat.masukan.tambah')->with('message', 'Berhasil menambahkan Surat Masukan.');
+    return redirect()->route('surat.keluaran.tambah')->with('message', 'Berhasil menambahkan Surat Keluaran.');
   }
 
   public function edit($id)
   {
-    $editsuratmasukan = SuratMasukan::find($id);
+    $editsuratkeluaran = SuratKeluaran::find($id);
 
     $getpegawai = Pegawai::select('*')
                 ->where('flag_pegawai', '1')
                 ->whereNotIn('id', [Auth::user()->id_pegawai])->get();
 
-    return view('backend/pages/tambahsuratmasuk')
+    return view('backend/pages/tambahsuratkeluaran')
       ->with('getpegawai', $getpegawai)
-      ->with('editsuratmasukan', $editsuratmasukan);
+      ->with('editsuratkeluaran', $editsuratkeluaran);
   }
 
   public function update(Request $request)
@@ -167,9 +166,10 @@ class SuratMasukanController extends Controller
 
       }
 
-        $set = SuratMasukan::find($request->id);
+        $set = SuratKeluaran::find($request->id);
         $set->id_pegawai = $request->pegawai_id;
         $set->id_user = Auth::user()->id;
+        $set->sifat_surat = $request->sifat_surat;
         $set->tanggal_surat = $request->tanggal_surat;
         $set->nomor_surat = $request->nomor_surat;
         $set->perihal = $request->perihal;
@@ -204,12 +204,12 @@ class SuratMasukanController extends Controller
         $set->save();
     
 
-    return redirect()->route('surat.masukan.tambah')->with('message', 'Berhasil mengubah Surat Masukan.');
+    return redirect()->route('surat.keluaran.tambah')->with('message', 'Berhasil mengubah Surat Keluaran.');
   }
 
   public function flagapproved($id)
   {
-    $set = SuratMasukan::find($id);
+    $set = SuratKeluaran::find($id);
     if($set->flag_approved=="1") {
       $set->tanggal_terima = date('Y-m-d');
       $set->flag_approved = 0;
@@ -220,26 +220,25 @@ class SuratMasukanController extends Controller
       $set->save();
     }
 
-    return redirect()->route('surat.masukan.lihat')->with('message', 'Berhasil mengubah status approved Surat Masukan.');
+    return redirect()->route('surat.keluaran.lihat')->with('message', 'Berhasil mengubah status approved Surat Keluaran.');
   }
 
   public function delete($id)
   {
-    $set = SuratMasukan::find($id);
+    $set = SuratKeluaran::find($id);
     $set->delete();
 
-    return redirect()->route('surat.masukan.lihat')->with('message', 'Berhasil menghapus Surat Masukan.');
+    return redirect()->route('surat.keluaran.lihat')->with('message', 'Berhasil menghapus Surat Keluaran.');
   }
 
   public function preview($id)
   {
-     $getsurat = DB::table('surat_masukan')->leftJoin('pegawai','surat_masukan.id_pegawai','=','pegawai.id')
+     $getsurat = DB::table('surat_keluaran')->leftJoin('pegawai','surat_keluaran.id_pegawai','=','pegawai.id')
                 ->leftJoin('skpd','pegawai.id_skpd','=','skpd.id')
-                ->leftJoin('jabatan','pegawai.id_jabatan','=','jabatan.id')
-                ->select('surat_masukan.*','pegawai.id as id_pegawai','pegawai.nama_pegawai as nama_pegawai','skpd.id as id_skpd','skpd.nama_skpd as nama_skpd','jabatan.id as id_jabatan','jabatan.nama_jabatan as nama_jabatan')
-                ->where('surat_masukan.id', $id)
+                ->leftJoin('jabatan','pegawai.jabatan','=','jabatan.id')
+                ->select('surat_keluaran.*','pegawai.id as id_pegawai','pegawai.nama_pegawai as nama_pegawai','skpd.id as id_skpd','skpd.nama_skpd as nama_skpd','jabatan.id as id_jabatan','jabatan.nama_jabatan as nama_jabatan')
+                ->where('surat_keluaran.id', $id)
                 ->first();
-    // dd($getsurat);
     return view('backend/pages/preview')->with('getsurat', $getsurat);
   }
   
