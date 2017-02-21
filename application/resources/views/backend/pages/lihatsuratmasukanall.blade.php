@@ -21,9 +21,6 @@
   <div class="row">
     <div class="col-md-12">
       <div class="box box-danger">
-        <div class="box-header">
-          <a href="{{route('surat.masukan.tambah')}}" class="btn bg-blue btn-flat margin">Tambah Berita</a>
-        </div><!-- /.box-header -->
         <div class="box-body">
           <table id="tabelinfo" class="table table-hover">
             <thead>
