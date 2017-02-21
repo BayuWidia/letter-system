@@ -91,7 +91,7 @@ class SuratMasukanController extends Controller
      $file = $request->file('upload_document');
       if($file != null)
       {
-        $photo_name = Auth::user()->nip_sapk.'-'.$request->tanggal_sk.'-'.$request->nomor_sk.'.' . $file->getClientOriginalExtension();
+        $photo_name = Auth::user()->pegawai_id.'-'.$request->tanggal_surat.'-'.$request->nomor_surat.'.' . $file->getClientOriginalExtension();
         $file->move('documents/', $photo_name);
       }else{
         $photo_name = "-";
@@ -156,7 +156,7 @@ class SuratMasukanController extends Controller
      $file = $request->file('upload_document');
       if($file != null)
       {
-        $photo_name = Auth::user()->nip_sapk.'-'.$request->tanggal_sk.'-'.$request->nomor_sk.'.' . $file->getClientOriginalExtension();
+        $photo_name = Auth::user()->pegawai_id.'-'.$request->tanggal_surat.'-'.$request->nomor_surat.'.' . $file->getClientOriginalExtension();
         $file->move('documents/', $photo_name);
       }else{
         $photo_name = "-";
@@ -237,4 +237,5 @@ class SuratMasukanController extends Controller
                 ->first();
     return view('backend/pages/previewkonten')->with('getsuratmasukan', $getsuratmasukan);
   }
+  
 }

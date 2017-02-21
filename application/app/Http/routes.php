@@ -18,7 +18,6 @@ Route::get('/admin', function () {
 
 Route::get('backend/dashboard', 'DashboardController@index')->name('dashboard');
 
-
 // =======================================================================================================================
 //Management Akun
 Route::get('admin/kelola-akun', 'AkunController@index')->name('akun.kelola');
@@ -33,7 +32,7 @@ Route::post('login-process', 'AkunController@loginProcess')->name('login');
 
 
 //========================================================================================================================
-//Informasi Bagi Pengetahuan
+//Informasi Surat Masukan
 Route::get('admin/lihat-surat-masukan', 'SuratMasukanController@lihat')->name('surat.masukan.lihat');
 Route::get('admin/tambah-surat-masukan', 'SuratMasukanController@tambah')->name('surat.masukan.tambah');
 Route::post('admin/store-surat-masukan', 'SuratMasukanController@store')->name('surat.masukan.store');
