@@ -147,33 +147,6 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-2 control-label">Disposisi</label>
-                <div class="col-sm-5">
-                  <select class="form-control select2" name="disposisi">
-                    <option>-- Pilih --</option>
-                        @if(isset($editpegawai))
-                            @if($editpegawai->disposisi=='1')
-                              <option value="1" selected="true">Staff</option>
-                              <option value="2">Bidang</option>
-                              <option value="3">Sekdis</option>
-                            @elseif($editpegawai->disposisi=='2')
-                              <option value="1">Staff</option>
-                              <option value="2" selected="true">Bidang</option>
-                              <option value="3">Sekdis</option>
-                            @elseif($editpegawai->disposisi=='3')
-                              <option value="1">Staff</option>
-                              <option value="2">Bidang</option>
-                              <option value="3" selected="true">Sekdis</option>
-                            @endif
-                        @else
-                            <option value="1">Staff</option>
-                            <option value="2">Bidang</option>
-                            <option value="3">Sekdis</option>
-                        @endif
-                  </select>
-                </div>
-              </div>
-              <div class="form-group">
                 <label class="col-sm-2 control-label">Foto Foto</label>
                 <div class="col-sm-3">
                   <input type="file" class="form-control" name="url_foto">

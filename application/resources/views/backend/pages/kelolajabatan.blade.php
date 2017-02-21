@@ -175,8 +175,20 @@
               @foreach($getjabatan as $key)
                 <tr>
                   <td>{{$i}}</td>
-                  <td>{{$key->nama_jabatan}}</td>
-                  <td>{{$key->keterangan_jabatan}}</td>
+                  <td>
+                    @if($key->nama_jabatan != "")
+                      {{$key->nama_jabatan}}
+                    @else
+                      <i style="color: red">Data belum diisikan</i>
+                    @endif
+                  </td>
+                  <td>
+                    @if($key->keterangan_jabatan != "")
+                      {{$key->keterangan_jabatan}}
+                    @else
+                      <i style="color: red">Data belum diisikan</i>
+                    @endif
+                  </td>
                   <td>
                     @if($key->flag_jabatan=="1")
                       <span class="badge bg-blue" data-toggle="tooltip" title="Aktif">

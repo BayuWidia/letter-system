@@ -18,8 +18,9 @@ class AkunController extends Controller
   public function index()
   {
     $getuser = User::get();
-    $getpegawai = Pegawai::select('*')->where('flag_pegawai', '1')->get();
-    // dd($getpegawai);
+    $getpegawai = Pegawai::select('*')
+                ->where('flag_pegawai', '1')
+                ->whereNotIn('id', [Auth::user()->id_pegawai])->get();
     return view('backend/pages/kelolaakun', compact('getuser','getpegawai'));
   }
 
@@ -34,7 +35,6 @@ class AkunController extends Controller
     } else {
       $photo_name = null;
     }
-    
 
     $set = new User;
     $set->id_pegawai = $request->id_pegawai;
@@ -44,6 +44,8 @@ class AkunController extends Controller
     $set->password = Hash::make($request->password);
     $set->url_foto = $photo_name;
     $set->activated = $request->activated;
+    $set->actor = Auth::user()->id;
+    $set->disposisi = $request->disposisi;
     $set->save();
 
     return redirect()->route('akun.kelola')->with('message', 'Berhasil memasukkan akun baru.');
@@ -75,6 +77,8 @@ class AkunController extends Controller
     $set->name = $request->name;
     $set->level = $request->level;
     $set->activated = $request->activated;
+    $set->actor = Auth::user()->id;
+    $set->disposisi = $request->disposisi;
     $set->save();
 
     return redirect()->route('akun.kelola')->with('message', 'Berhasil mengubah data akun.');

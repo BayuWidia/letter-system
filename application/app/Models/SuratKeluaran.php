@@ -9,7 +9,7 @@ class SuratKeluaran extends Model
   protected $table = 'surat_keluaran';
 
   protected $fillable = [
-    'id_pegawai', 'id_user', 'sifat_surat', 'tanggal_surat', 'nomor_surat', 'perihal', 'tanggal_terima', 'disposisi_staff', 'disposisi_bidang', 'disposisi_sekdis', 'catatan', 'url_document', 'flag_approved', 'actor'
+    'id_pegawai', 'id_user', 'sifat_surat', 'tanggal_surat', 'nomor_surat', 'perihal', 'tanggal_terima', 'disposisi_staff', 'disposisi_bidang', 'disposisi_sekdis', 'catatan', 'url_document', 'flag_approved'
   ];
 
   public function pegawai()

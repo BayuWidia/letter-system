@@ -83,7 +83,6 @@
                 <th>Nama Pegawai</th>
                 <th>SKPD</th>
                 <th>Jabatan</th>
-                <th>Disposisi</th>
                 <th>Status</th>
                 <th>Aksi</th>
               </tr>
@@ -93,20 +92,34 @@
               @foreach($getpegawai as $key)
                 <tr>
                   <td>{{$i}}</td>
-                  <td>{{$key->nip}}</td>
-                  <td>{{$key->nama_pegawai}}</td>
-                  <td>{{$key->nama_skpd}}</td>
-                  <td>{{$key->nama_jabatan}}</td>
                   <td>
-                    @if($key->disposisi=="1")
-                      Staff
-                    @elseif($key->disposisi=="2")
-                      Bidang
-                    @elseif($key->disposisi=="3")
-                      Sekdis
+                    @if($key->nip != "")
+                      {{$key->nip}}
+                    @else
+                      <i style="color: red">Data belum diisikan</i>
                     @endif
                   </td>
                   <td>
+                    @if($key->nama_pegawai != "")
+                      {{$key->nama_pegawai}}
+                    @else
+                      <i style="color: red">Data belum diisikan</i>
+                    @endif
+                  </td>
+                  <td>
+                    @if($key->nama_skpd != "")
+                      {{$key->nama_skpd}}
+                    @else
+                      <i style="color: red">Data belum diisikan</i>
+                    @endif
+                  </td>
+                  <td>
+                    @if($key->nama_jabatan != "")
+                      {{$key->nama_jabatan}}
+                    @else
+                      <i style="color: red">Data belum diisikan</i>
+                    @endif
+                  </td>                  <td>
                     @if($key->flag_pegawai=="1")
                       <span class="badge bg-blue" data-toggle="tooltip" title="Pegawai Berstatuskan Aktif"><i class="fa fa-thumbs-up"></i></span>
                     @else

@@ -111,7 +111,7 @@
                   <form class="form-horizontal" action="{{route('edit.profile.edit')}}" enctype="multipart/form-data" method="post">
                   {{csrf_field()}}
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Nama</label>
+                    <label for="inputName" class="col-sm-2 control-label">Nama Panggilan</label>
                     <div class="col-sm-10">
                       <input type="hidden" name="id" value="{{$getuser->id}}">
                       <input type="text" class="form-control" name="name"

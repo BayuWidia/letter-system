@@ -31,6 +31,20 @@ Route::get('logout-process', 'AkunController@logoutProcess')->name('logout');
 Route::post('login-process', 'AkunController@loginProcess')->name('login');
 // =======================================================================================================================
 
+
+//========================================================================================================================
+//Informasi Bagi Pengetahuan
+Route::get('admin/lihat-surat-masukan', 'SuratMasukanController@lihat')->name('surat.masukan.lihat');
+Route::get('admin/tambah-surat-masukan', 'SuratMasukanController@tambah')->name('surat.masukan.tambah');
+Route::post('admin/store-surat-masukan', 'SuratMasukanController@store')->name('surat.masukan.store');
+Route::get('admin/edit-surat-masukan/{id}', 'SuratMasukanController@edit')->name('surat.masukan.edit');
+Route::post('admin/update-surat-masukan', 'SuratMasukanController@update')->name('surat.masukan.update');
+Route::get('admin/approved-surat-masukan/{id}', 'SuratMasukanController@flagapproved')->name('surat.masukan.flagapproved');
+Route::get('admin/delete-surat-masukan/{id}', 'SuratMasukanController@delete')->name('surat.masukan.delete');
+Route::get('admin/preview-surat-masukan/{id}', 'SuratMasukanController@preview')->name('surat.masukan.preview');
+// =======================================================================================================================
+
+
 // =======================================================================================================================
 //Management Pegawai
 Route::get('admin/lihat-pegawai', 'PegawaiController@lihat')->name('pegawai.lihat');

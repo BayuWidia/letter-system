@@ -58,6 +58,7 @@
       </div>
     </div><!-- ./col -->
 
+    @if(Auth::user()->level=="1" || Auth::user()->level=="2")
     <div class="col-lg-6 col-md-3 col-xs-12">
       <div class="info-box bg-blue">
         <span class="info-box-icon"><i class="fa fa-smile-o"></i></span>
@@ -96,7 +97,7 @@
         <!-- /.info-box-content -->
       </div>
     </div><!-- ./col -->
-
+    @endif
   </div>
 
 
@@ -105,10 +106,6 @@
       <div class="box box-success">
         <div class="box-header with-border">
           <h3 class="box-title">Surat Masukan</h3>
-
-          <div class="box-tools pull-right">
-            <span class="label label-warning">{{$recordsuratmasukan}} Surat Masukan Baru</span>
-          </div>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -149,9 +146,6 @@
       <div class="box box-success">
         <div class="box-header with-border">
           <h3 class="box-title">Surat Keluaran</h3>
-          <div class="box-tools pull-right">
-            <span class="label label-warning">{{$recordsuratkeluaran}} Surat Keluaran Baru</span>
-          </div>
         </div>
         <!-- /.box-header -->
         <div class="box-body">

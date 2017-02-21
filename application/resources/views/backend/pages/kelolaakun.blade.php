@@ -43,58 +43,41 @@
             <h4 class="modal-title">Edit Akun</h4>
           </div>
           <div class="modal-body">
-            <div class="col-md-14 {{ $errors->has('email') ? 'has-error' : '' }}">
+            <div class="col-md-14">
               <label class="control-label">Email</label>
               <input type="hidden" name="id" id="id">
               <input id="edit_email" type="email" name="email" class="form-control" placeholder="Email"
-              @if($errors->has('email'))
-                value="{{ old('email') }}"
-              @endif
               readonly>
-              @if($errors->has('email'))
-                <span class="help-block">
-                  <i>* {{$errors->first('email')}}</i>
-                </span>
-              @endif
             </div>
-            <div class="col-md-14 {{ $errors->has('name') ? 'has-error' : '' }}">
-              <label class="control-label">Name</label>
-              <input id="edit_name" type="input" name="name" class="form-control" placeholder="Name"
-              @if($errors->has('name'))
-                value="{{ old('name') }}"
-              @endif>
-              @if($errors->has('name'))
-                <span class="help-block">
-                  <i>* {{$errors->first('name')}}</i>
-                </span>
-              @endif
+            <div class="col-md-14">
+              <label class="control-label">Nama Panggilan</label>
+              <input id="edit_name" type="input" name="name" class="form-control" placeholder="Name">
             </div>
-            <div class="col-md-14 {{ $errors->has('level') ? 'has-error' : '' }}">
+            <div class="col-md-14">
               <label class="control-label">Level</label>
               <select class="form-control" name="level" id="leveluser">
                 <option value="-- Pilih --">-- Pilih --</option>
-                <option value="1" {{ old('level')=="1" ? 'selected' : '' }} id="flag_super">Super Admin</option>
-                <option value="2" {{ old('level')=="2" ? 'selected' : '' }} id="flag_admin">Administrator</option>
-                <option value="3" {{ old('level')=="3" ? 'selected' : '' }} id="flag_user">User</option>
+                <option value="1" id="flag_super">Super Admin</option>
+                <option value="2" id="flag_admin">Administrator</option>
+                <option value="3" id="flag_user">User</option>
               </select>
-              @if($errors->has('level'))
-                <span class="help-block">
-                  <i>* {{$errors->first('level')}}</i>
-                </span>
-              @endif
             </div>
-            <div class="col-md-14 {{ $errors->has('activated') ? 'has-error' : '' }}">
+            <div class="col-md-14">
+              <label class="control-label">Disposisi</label>
+              <select class="form-control" name="disposisi" id="leveldisposisi">
+                <option value="-- Pilih --">-- Pilih --</option>
+                <option value="1" id="flag_staff">Staff</option>
+                <option value="2" id="flag_bidang">Bidang</option>
+                <option value="3" id="flag_sekdis">Sekdis</option>
+              </select>
+            </div>
+            <div class="col-md-14">
               <label class="control-label">Status Aktif</label>
               <select class="form-control" name="activated" id="activatedid">
                 <option value="-- Pilih --">-- Pilih --</option>
-                <option value="0" {{ old('activated')=="0" ? 'selected' : '' }} id="flag_tidak_aktif">Tidak Aktif</option>
-                <option value="1" {{ old('activated')=="1" ? 'selected' : '' }} id="flag_aktif">Aktif</option>
+                <option value="0" id="flag_tidak_aktif">Tidak Aktif</option>
+                <option value="1" id="flag_aktif">Aktif</option>
               </select>
-              @if($errors->has('activated'))
-                <span class="help-block">
-                  <i>* {{$errors->first('activated')}}</i>
-                </span>
-              @endif
             </div>
           </div>
           <div class="modal-footer">
@@ -151,87 +134,49 @@
                 <h3 class="box-title">Formulir Tambah Akun </h3>
             </div>
             <div class="box-body">
-              <div id="skpdoption" class="col-md-14 {{ $errors->has('id_skpd') ? 'has-error' : '' }}">
+              <div id="skpdoption" class="col-md-14">
                 <label class="control-label">Pegawai</label>
                 <select class="form-control select2" name="id_pegawai">
                   <option value="-- Pilih --">-- Pilih --</option>
                   @foreach($getpegawai as $key)
-                    @if (old('id_pegawai')==$key->id)
-                      <option value="{{$key->id}}" selected>{{$key->nama_pegawai}}</option>
-                    @else
-                      <option value="{{$key->id}}">{{$key->nama_pegawai}}</option>
-                    @endif
+                    <option value="{{$key->id}}">{{$key->nama_pegawai}}</option>
                   @endforeach
                 </select>
-                @if($errors->has('id_skpd'))
-                  <span class="help-block">
-                    <i>* {{$errors->first('id_skpd')}}</i>
-                  </span>
-                @endif
               </div>
-              <div class="col-md-14 {{ $errors->has('email') ? 'has-error' : '' }}">
+              <div class="col-md-14">
                 <label class="control-label">Email</label>
-                <input type="email" name="email" class="form-control" placeholder="Email"
-                @if($errors->has('email'))
-                  value="{{ old('email') }}"
-                @endif
-                >
-                @if($errors->has('email'))
-                  <span class="help-block">
-                    <i>* {{$errors->first('email')}}</i>
-                  </span>
-                @endif
+                <input type="email" name="email" class="form-control" placeholder="Email">
               </div>
-              <div class="col-md-14 {{ $errors->has('name') ? 'has-error' : '' }}">
-                <label class="control-label">Name</label>
-                <input type="input" name="name" class="form-control" placeholder="Name"
-                @if($errors->has('name'))
-                  value="{{ old('name') }}"
-                @endif
-                >
-                @if($errors->has('name'))
-                  <span class="help-block">
-                    <i>* {{$errors->first('name')}}</i>
-                  </span>
-                @endif
+              <div class="col-md-14">
+                <label class="control-label">Nama Panggilan</label>
+                <input type="input" name="name" class="form-control" placeholder="Name">
               </div>
-              <div class="col-md-14 {{ $errors->has('level') ? 'has-error' : '' }}">
+              <div class="col-md-14">
                 <label class="control-label">Level</label>
                 <select class="form-control" name="level" id="leveluser">
                   <option value="-- Pilih --">-- Pilih --</option>
-                  <option value="1" {{ old('level')=="1" ? 'selected' : '' }} >Super Admin</option>
-                  <option value="2" {{ old('level')=="2" ? 'selected' : '' }} >Administrator</option>
-                  <option value="3" {{ old('level')=="3" ? 'selected' : '' }} >User</option>
+                  <option value="1">Super Admin</option>
+                  <option value="2">Administrator</option>
+                  <option value="3">User</option>
                 </select>
-                @if($errors->has('level'))
-                  <span class="help-block">
-                    <i>* {{$errors->first('level')}}</i>
-                  </span>
-                @endif
               </div>
-              <div class="col-md-14 {{ $errors->has('url_foto') ? 'has-error' : '' }}">
+              <div class="col-md-14">
+              <label class="control-label">Disposisi</label>
+              <select class="form-control" name="disposisi" id="leveldisposisi">
+                <option value="-- Pilih --">-- Pilih --</option>
+                <option value="1">Staff</option>
+                <option value="2">Bidang</option>
+                <option value="3">Sekdis</option>
+              </select>
+            </div>
+              <div class="col-md-14">
                 <label class="control-label">Pilih Foto</label>
                 <input type="file" name="url_foto" accept=".jpg, .png, .bmp">
                 <font color="red"><small>*Ukuran Foto 128px X 128px</small></font>
-                @if($errors->has('url_foto'))
-                  <span class="help-block">
-                    <strong>{{ $errors->first('url_foto')}}
-                    </strong>
-                  </span>
-                @endif
               </div>
-              <div class="col-md-14 {{ $errors->has('password') ? 'has-error' : '' }}">
+              <div class="col-md-14">
                 <label class="control-label">Password</label>
-                <input type="password" name="password" class="form-control" placeholder="Password"
-                @if($errors->has('password'))
-                  value="{{ old('password') }}"
-                @endif
-                >
-                @if($errors->has('password'))
-                  <span class="help-block">
-                    <i>* {{$errors->first('password')}}</i>
-                  </span>
-                @endif
+                <input type="password" name="password" class="form-control" placeholder="Password">
               </div>
             </div>
             <div class="box-footer">
@@ -259,6 +204,7 @@
                 <th>Level</th>
                 <th>Nama User</th>
                 <th>Status Aktifasi</th>
+                <th>Disposisi</th>
                 <th>Aksi</th>
               </tr>
             </thead>
@@ -267,7 +213,13 @@
               @foreach($getuser as $key)
                 <tr>
                   <td>{{$i}}</td>
-                  <td>{{$key->email}}</td>
+                  <td>
+                    @if($key->email != "")
+                      {{$key->email}}
+                    @else
+                      <i style="color: red">Data belum diisikan</i>
+                    @endif
+                  </td>
                   <td>
                     @if($key->level=="1")
                       Super Admin
@@ -276,8 +228,14 @@
                     @elseif($key->level=="3")
                       User
                     @endif
+                  </td> 
+                  <td>
+                    @if($key->name != "")
+                      {{$key->name}}
+                    @else
+                      <i style="color: red">Data belum diisikan</i>
+                    @endif
                   </td>
-                  <td>{{$key->name}}</td>
                   <td>
                     @if($key->activated=="0")
                       <span class="badge bg-red" data-toggle="tooltip" title="Tidak Aktif">
@@ -289,6 +247,15 @@
                       </span>
                     @endif
                   </td>
+                  <td>
+                    @if($key->disposisi=="1")
+                      Staff
+                    @elseif($key->disposisi=="2")
+                      Bidang
+                    @elseif($key->disposisi=="3")
+                      Sekdis
+                    @endif
+                  </td> 
                   <td>
                     <span data-toggle="tooltip" title="Edit">
                       <a class="btn btn-xs btn-warning btn-flat edit" data-toggle="modal" data-target="#modaledit" data-value="{{$key->id}}">
@@ -349,19 +316,31 @@
             var name = data.name;
             var level = data.level;
             var activated = data.activated;
+            var disposisi = data.disposisi;
 
             $('#id').attr('value', id);
             $('#edit_email').attr('value', email);
             $('#edit_name').attr('value', name);
             if (level=="1") {
+              $('#flag_super').attr('selected', true);
+            }else if (level=="2") {
               $('#flag_admin').attr('selected', true);
-            } else {
-              $('#flag_guest').attr('selected', true);
+            }else {
+              $('#flag_user').attr('selected', true);
             }
+
             if (activated=="0") {
               $('#flag_tidak_aktif').attr('selected', true);
             } else {
               $('#flag_aktif').attr('selected', true);
+            }
+
+            if (disposisi=="1") {
+              $('#flag_staff').attr('selected', true);
+            }else if (disposisi=="2") {
+              $('#flag_bidang').attr('selected', true);
+            }else {
+              $('#flag_sekdis').attr('selected', true);
             }
           }
         })
@@ -372,6 +351,129 @@
         $('#sethapus').attr('href', '{{url('admin/delete-akun/')}}/'+a);
       });
 
+    });
+  </script>
+  <script>
+    $(function () {
+      var level = $('#levelmenu').val();
+      if (level==2) {
+        $('#submenu').show();
+      } else {
+        $('#submenu').hide();
+        $('#idlinkcheck').hide();
+        $('#linkmainmenu').hide();
+      }
+
+      $('#linkcheck').click(function(){
+        if (this.checked) {
+          $('#linkmainmenu').show();
+        } else {
+          $('#linkmainmenu').hide();
+        }
+      });
+
+      $('#linkcheckedit').click(function(){
+        if (this.checked) {
+          $('#linkmainmenuedit').show();
+        } else {
+          $('#linkmainmenuedit').hide();
+        }
+      });
+
+      $('#levelmenu').change(function(){
+        var a = $(this).val();
+        if (a==2) {
+          $('#idlinkcheck').hide();
+          $('#submenu').show();
+        } else if(a==1){
+          $('#idlinkcheck').show();
+          $('#submenu').hide();
+        } else {
+          $('#submenu').hide();
+        }
+      });
+
+      $('#levelmenuedit').change(function(){
+        var a = $(this).val();
+        if (a==2) {
+          $('#idlinkcheckedit').hide();
+          $('#submenuedit').show();
+        } else if (a==1) {
+          $('#idlinkcheckedit').show();
+          $('#submenuedit').hide();
+        } else {
+          $('#submenuedit').hide();
+        }
+      });
+
+      $("#tabelinfo").DataTable();
+
+      $("#tabelinfo").on("click", "a.hapus", function(){
+        var a = $(this).data('value');
+        $('#sethapus').attr('href', '{{url('admin/delete-menu/')}}/'+a);
+      });
+
+      $("#tabelinfo").on("click", "a.edit", function(){
+        var a = $(this).data('value');
+        $.ajax({
+          url: "{{url('admin/bind-menu')}}/" + a,
+          success: function(data){
+            var parent_menu = data.parent_menu;
+            var nama = data.nama;
+            var level = data.level;
+            var linkmainmenu = data.linkmainmenu;
+
+
+            if (level==1) {
+              if (linkmainmenu!="") {
+                $('#linkcheckedit').attr('checked',true);
+                $('#linkmainmenuedit').show()
+                var potonglink = linkmainmenu.substring(7);
+                $('#linkedit').val(potonglink);
+              } else {
+                $('#linkcheckedit').attr('checked',false);
+                $('#linkmainmenuedit').hide()
+              }
+
+              $('#submenuedit').hide();
+              $('#namaedit').val(nama);
+              $('#levelmenuedit1').attr('selected', true);
+              $('#levelmenuedit2').removeAttr('selected');
+              $('#idlinkcheckedit').show();
+            } else {
+              $('#idlinkcheckedit').hide();
+              $('#linkmainmenuedit').hide()
+              $('#linkmainmenuedit').hide()
+              $('#submenuedit').show();
+              $('#namaedit').val(nama);
+              $('#levelmenuedit2').attr('selected', true);
+              $('#levelmenuedit1').removeAttr('selected');
+
+              ////////////// BUGS //////////////////
+              $('#parentmenuedit option:selected').prop('selected', false);
+              $('#submenuedit'+parent_menu).attr('selected', true);
+              ////////////// BUGS //////////////////
+            }
+          }
+        })
+      });
+
+      $('#tahun_anggaran').datepicker({
+        format: " yyyy",
+        viewMode: "years",
+        minViewMode: "years"
+      });
+
+      $('#edit_tahun_anggaran').datepicker({
+        format: " yyyy",
+        viewMode: "years",
+        minViewMode: "years"
+      });
+
+      $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+        checkboxClass: 'icheckbox_minimal-blue',
+        radioClass: 'iradio_minimal-blue'
+      });
     });
   </script>
 

@@ -52,7 +52,6 @@ class PegawaiController extends Controller
         $set->nama_pegawai = $request->nama_pegawai;
         $set->nip = $request->nip;
         $set->url_foto = $photo_name;
-        $set->disposisi = $request->disposisi;
         $set->flag_pegawai = 1;
         $set->actor = Auth::user()->id;
         $set->save();
@@ -63,7 +62,6 @@ class PegawaiController extends Controller
 
         $set->nama_pegawai = $request->nama_pegawai;
         $set->nip = $request->nip;
-        $set->disposisi = $request->disposisi;
         $set->flag_pegawai = 1;
         $set->actor = Auth::user()->id;
         $set->save();
@@ -103,7 +101,6 @@ class PegawaiController extends Controller
         $set->nama_pegawai = $request->nama_pegawai;
         $set->nip = $request->nip;
         $set->url_foto = $photo_name;
-        $set->disposisi = $request->disposisi;
         $set->flag_pegawai = 1;
         $set->save();
     } else {
@@ -113,7 +110,6 @@ class PegawaiController extends Controller
 
         $set->nama_pegawai = $request->nama_pegawai;
         $set->nip = $request->nip;
-        $set->disposisi = $request->disposisi;
         $set->flag_pegawai = 1;
         $set->save();
     }

@@ -184,9 +184,27 @@
               @foreach($getskpd as $key)
                 <tr>
                   <td>{{$i}}</td>
-                  <td>{{$key->nama_skpd}}</td>
-                  <td>{{$key->singkatan_skpd}}</td>
-                  <td>{{$key->keterangan_skpd}}</td>
+                  <td>
+                    @if($key->nama_skpd != "")
+                      {{$key->nama_skpd}}
+                    @else
+                      <i style="color: red">Data belum diisikan</i>
+                    @endif
+                  </td>
+                  <td>
+                    @if($key->singkatan_skpd != "")
+                      {{$key->singkatan_skpd}}
+                    @else
+                      <i style="color: red">Data belum diisikan</i>
+                    @endif
+                  </td>
+                  <td>
+                    @if($key->keterangan_skpd != "")
+                      {{$key->keterangan_skpd}}
+                    @else
+                      <i style="color: red">Data belum diisikan</i>
+                    @endif
+                  </td>
                   <td>
                     @if($key->flag_skpd=="1")
                       <span class="badge bg-blue" data-toggle="tooltip" title="Aktif">
