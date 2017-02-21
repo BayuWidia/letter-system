@@ -67,9 +67,11 @@
           @endif
 
           @if($getuser->level=="1")
+            <p class="text-muted text-center">Super Admin</p>
+          @elseif($getuser->level=="2")
             <p class="text-muted text-center">Administrator</p>
           @else
-            <p class="text-muted text-center">Guest</p>
+            <p class="text-muted text-center">User</p>
           @endif
           @if($getuser->activated=="1")
             <p class="text-muted text-center"><span class="label label-info">Aktif</span></p>
@@ -132,9 +134,11 @@
                     <div class="col-sm-10">
                       <input type="text" class="form-control" name="hakakses" readonly
                         @if($getuser->level=="1")
+                          value="Super Admin"
+                        @elseif($getuser->level=="2")
                           value="Administrator"
                         @else
-                          value="Guest"
+                          value="User"
                         @endif
                       >
                     </div>

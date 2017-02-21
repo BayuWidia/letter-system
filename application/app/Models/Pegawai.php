@@ -9,7 +9,7 @@ class Pegawai extends Model
   protected $table = 'pegawai';
 
   protected $fillable = [
-    'id_skpd', 'id_jabatan', 'nama_pegawai', 'nip', 'url_foto', 'disposisi', 'flag_pegawai'
+    'id_skpd', 'id_jabatan', 'nama_pegawai', 'nip', 'url_foto', 'disposisi', 'flag_pegawai', 'actor'
   ];
 
   public function skpd()

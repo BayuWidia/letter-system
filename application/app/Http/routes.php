@@ -31,6 +31,16 @@ Route::get('logout-process', 'AkunController@logoutProcess')->name('logout');
 Route::post('login-process', 'AkunController@loginProcess')->name('login');
 // =======================================================================================================================
 
+// =======================================================================================================================
+//Management Pegawai
+Route::get('admin/lihat-pegawai', 'PegawaiController@lihat')->name('pegawai.lihat');
+Route::get('admin/tambah-pegawai', 'PegawaiController@tambah')->name('pegawai.tambah');
+Route::post('admin/store-pegawai', 'PegawaiController@store')->name('pegawai.store');
+Route::get('admin/edit-pegawai/{id}', 'PegawaiController@edit')->name('pegawai.edit');
+Route::post('admin/update-pegawai', 'PegawaiController@update')->name('pegawai.update');
+Route::get('admin/delete-pegawai/{id}', 'PegawaiController@delete')->name('pegawai.delete');
+// =======================================================================================================================
+
 
 // =======================================================================================================================
 //Jabatan

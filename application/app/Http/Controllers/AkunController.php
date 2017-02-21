@@ -9,8 +9,7 @@ use Hash;
 use Auth;
 use Image;
 use App\Models\User;
-use App\Models\Berita;
-use App\Models\Slider;
+use App\Models\Pegawai;
 use App\Http\Requests;
 use App\Models\MasterSKPD;
 
@@ -19,8 +18,9 @@ class AkunController extends Controller
   public function index()
   {
     $getuser = User::get();
-    // dd($getuser);
-    return view('backend/pages/kelolaakun', compact('getuser'));
+    $getpegawai = Pegawai::select('*')->where('flag_pegawai', '1')->get();
+    // dd($getpegawai);
+    return view('backend/pages/kelolaakun', compact('getuser','getpegawai'));
   }
 
   public function store(Request $request)
@@ -37,12 +37,13 @@ class AkunController extends Controller
     
 
     $set = new User;
+    $set->id_pegawai = $request->id_pegawai;
     $set->name = $request->name;
     $set->email = $request->email;
     $set->level = $request->level;
     $set->password = Hash::make($request->password);
     $set->url_foto = $photo_name;
-    $set->activated = '1';
+    $set->activated = $request->activated;
     $set->save();
 
     return redirect()->route('akun.kelola')->with('message', 'Berhasil memasukkan akun baru.');
@@ -81,16 +82,11 @@ class AkunController extends Controller
 
   public function delete($id)
   {
-    $cekberita = Berita::where('id_user', $id)->first();
-
-    if($cekberita==null) {
-      $set = User::find($id);
-      $set->delete();
+     $set = User::find($id);
+     $set->activated = 0;
+     $set->save();
 
       return redirect()->route('akun.kelola')->with('message', 'Berhasil menghapus data akun.');
-    } else {
-      return redirect()->route('akun.kelola')->with('messagefail', 'Gagal melakukan hapus data. Data akun telah memiliki relasi dengan data yang lain.');
-    }
   }
 
   public function bind($id)

@@ -4,6 +4,7 @@
   <title>Dashboard</title>
   <link rel="stylesheet" href="{{asset('plugins/datatables/dataTables.bootstrap.css')}}">
   <link rel="stylesheet" href="{{asset('dist/css/AdminLTE.min.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins/select2/select2.min.css')}}">
 @stop
 
 @section('breadcrumb')
@@ -72,8 +73,9 @@
               <label class="control-label">Level</label>
               <select class="form-control" name="level" id="leveluser">
                 <option value="-- Pilih --">-- Pilih --</option>
-                <option value="1" {{ old('level')=="1" ? 'selected' : '' }} id="flag_admin">Administrator</option>
-                <option value="2" {{ old('level')=="2" ? 'selected' : '' }} id="flag_guest">Guest</option>
+                <option value="1" {{ old('level')=="1" ? 'selected' : '' }} id="flag_super">Super Admin</option>
+                <option value="2" {{ old('level')=="2" ? 'selected' : '' }} id="flag_admin">Administrator</option>
+                <option value="3" {{ old('level')=="3" ? 'selected' : '' }} id="flag_user">User</option>
               </select>
               @if($errors->has('level'))
                 <span class="help-block">
@@ -149,6 +151,24 @@
                 <h3 class="box-title">Formulir Tambah Akun </h3>
             </div>
             <div class="box-body">
+              <div id="skpdoption" class="col-md-14 {{ $errors->has('id_skpd') ? 'has-error' : '' }}">
+                <label class="control-label">Pegawai</label>
+                <select class="form-control select2" name="id_pegawai">
+                  <option value="-- Pilih --">-- Pilih --</option>
+                  @foreach($getpegawai as $key)
+                    @if (old('id_pegawai')==$key->id)
+                      <option value="{{$key->id}}" selected>{{$key->nama_pegawai}}</option>
+                    @else
+                      <option value="{{$key->id}}">{{$key->nama_pegawai}}</option>
+                    @endif
+                  @endforeach
+                </select>
+                @if($errors->has('id_skpd'))
+                  <span class="help-block">
+                    <i>* {{$errors->first('id_skpd')}}</i>
+                  </span>
+                @endif
+              </div>
               <div class="col-md-14 {{ $errors->has('email') ? 'has-error' : '' }}">
                 <label class="control-label">Email</label>
                 <input type="email" name="email" class="form-control" placeholder="Email"
@@ -179,8 +199,9 @@
                 <label class="control-label">Level</label>
                 <select class="form-control" name="level" id="leveluser">
                   <option value="-- Pilih --">-- Pilih --</option>
-                  <option value="1" {{ old('level')=="1" ? 'selected' : '' }} >Administrator</option>
-                  <option value="2" {{ old('level')=="2" ? 'selected' : '' }} >Guest</option>
+                  <option value="1" {{ old('level')=="1" ? 'selected' : '' }} >Super Admin</option>
+                  <option value="2" {{ old('level')=="2" ? 'selected' : '' }} >Administrator</option>
+                  <option value="3" {{ old('level')=="3" ? 'selected' : '' }} >User</option>
                 </select>
                 @if($errors->has('level'))
                   <span class="help-block">
@@ -249,9 +270,11 @@
                   <td>{{$key->email}}</td>
                   <td>
                     @if($key->level=="1")
-                      Administrator
+                      Super Admin
                     @elseif($key->level=="2")
-                      Guest
+                      Administrator
+                    @elseif($key->level=="3")
+                      User
                     @endif
                   </td>
                   <td>{{$key->name}}</td>
@@ -305,6 +328,11 @@
   <script src="{{asset('dist/js/app.min.js')}}"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="{{asset('dist/js/demo.js')}}"></script>
+  <script src="{{asset('plugins/select2/select2.full.min.js')}}"></script>
+
+  <script type="text/javascript">
+  $(".select2").select2();
+  </script>
 
   <script>
     $(function () {

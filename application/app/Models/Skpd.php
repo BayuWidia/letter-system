@@ -9,7 +9,7 @@ class Skpd extends Model
   protected $table = 'skpd';
 
   protected $fillable = [
-    'nama_skpd', 'keterangan_skpd', 'flag_skpd'
+    'nama_skpd', 'keterangan_skpd', 'flag_skpd', 'actor'
   ];
 
 }

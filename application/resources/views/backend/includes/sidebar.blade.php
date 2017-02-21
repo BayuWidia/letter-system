@@ -44,6 +44,16 @@
         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
       </a>
     </li>
+     <li class="treeview">
+      <a href="#" id="colortreemenulihref">
+        <i class="fa fa-user-plus"></i>
+        <span>Manajemen Pegawai</span>
+        <i class="fa fa-angle-left pull-right"></i>
+      </a>
+      <ul class="treeview-menu">
+        <li><a href="{{url('admin/lihat-pegawai')}}"><i class="fa fa-circle-o"></i> Kelola Pegawai</a></li>
+      </ul>
+    </li>
     <li class="treeview">
       <a href="#" id="colortreemenulihref">
         <i class="fa fa-mortar-board"></i>
@@ -57,7 +67,7 @@
     <li class="treeview">
       <a href="#" id="colortreemenulihref">
         <i class="fa fa-bank"></i>
-        <span>Manajemen Skpd</span>
+        <span>Kelola Skpd</span>
         <i class="fa fa-angle-left pull-right"></i>
       </a>
       <ul class="treeview-menu">

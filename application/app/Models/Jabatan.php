@@ -9,7 +9,7 @@ class Jabatan extends Model
   protected $table = 'jabatan';
 
   protected $fillable = [
-    'nama_jabatan', 'keterangan_jabatan', 'flag_jabatan'
+    'nama_jabatan', 'keterangan_jabatan', 'flag_jabatan', 'actor'
   ];
 
  

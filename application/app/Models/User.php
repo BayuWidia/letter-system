@@ -9,7 +9,7 @@ class User extends Authenticatable
 
     protected $table = 'users';
     protected $fillable = [
-        'id_pegawai', 'name', 'email', 'password', 'level', 'url_foto', 'activated'
+        'id_pegawai', 'name', 'email', 'password', 'level', 'url_foto', 'activated', 'actor'
     ];
 
 
