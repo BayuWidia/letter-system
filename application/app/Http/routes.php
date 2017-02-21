@@ -26,7 +26,6 @@ Route::post('admin/store-akun', 'AkunController@store')->name('akun.store');
 Route::post('admin/update-akun', 'AkunController@update')->name('akun.update');
 Route::get('admin/delete-akun/{id}', 'AkunController@delete')->name('akun.delete');
 Route::get('admin/bind-akun/{id}', 'AkunController@bind')->name('akun.bind');
-Route::get('email-activation/{code}', 'AkunController@emailActivation');
 Route::post('set-password', 'AkunController@setPassword')->name('setpassword');
 Route::get('logout-process', 'AkunController@logoutProcess')->name('logout');
 Route::post('login-process', 'AkunController@loginProcess')->name('login');
@@ -34,13 +33,21 @@ Route::post('login-process', 'AkunController@loginProcess')->name('login');
 
 
 // =======================================================================================================================
-//Features
-Route::get('admin/kelola-features', 'FeaturesController@index')->name('features.index');
-Route::post('admin/store-features', 'FeaturesController@store')->name('features.store');
-Route::get('admin/delete-features/{id}', 'FeaturesController@delete')->name('features.delete');
-Route::post('admin/edit-features', 'FeaturesController@edit')->name('features.edit');
-Route::get('admin/publish-features/{id}', 'FeaturesController@publish')->name('features.publish');
-Route::get('admin/bind-features/{id}', 'FeaturesController@bind')->name('features.bind');
+//Jabatan
+Route::get('admin/kelola-jabatan', 'JabatanController@index')->name('jabatan.index');
+Route::post('admin/store-jabatan', 'JabatanController@store')->name('jabatan.store');
+Route::get('admin/delete-jabatan/{id}', 'JabatanController@delete')->name('jabatan.delete');
+Route::post('admin/edit-jabatan', 'JabatanController@edit')->name('jabatan.edit');
+Route::get('admin/bind-jabatan/{id}', 'JabatanController@bind')->name('jabatan.bind');
+// =======================================================================================================================
+
+// =======================================================================================================================
+//SKPD
+Route::get('admin/kelola-skpd', 'SkpdController@index')->name('skpd.index');
+Route::post('admin/store-skpd', 'SkpdController@store')->name('skpd.store');
+Route::get('admin/delete-skpd/{id}', 'SkpdController@delete')->name('skpd.delete');
+Route::post('admin/edit-skpd', 'SkpdController@edit')->name('skpd.edit');
+Route::get('admin/bind-skpd/{id}', 'SkpdController@bind')->name('skpd.bind');
 // =======================================================================================================================
 
 

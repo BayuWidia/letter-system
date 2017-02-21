@@ -20,11 +20,11 @@
   <div class="row">
     <div class="col-lg-6 col-md-3 col-xs-12">
       <div class="info-box bg-yellow">
-        <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
+        <span class="info-box-icon"><i class="fa fa-envelope"></i></span>
 
         <div class="info-box-content">
-          <span class="info-box-text">Jumlah Profile</span>
-          <span class="info-box-number">{{$countberita}}</span>
+          <span class="info-box-text">Jumlah Surat Masukan</span>
+          <span class="info-box-number">{{$countsuratmasukan}}</span>
 
           <div class="progress">
             <div class="progress-bar" style="width:100%"></div>
@@ -37,19 +37,40 @@
       </div>
     </div><!-- ./col -->
 
+
     <div class="col-lg-6 col-md-3 col-xs-12">
-      <div class="info-box bg-blue">
-        <span class="info-box-icon"><i class="fa fa-users"></i></span>
+      <!-- /.info-box -->
+      <div class="info-box bg-aqua">
+        <span class="info-box-icon"><i class="fa fa-envelope-o"></i></span>
 
         <div class="info-box-content">
-          <span class="info-box-text">Jumlah User</span>
-          <span class="info-box-number">{{$countsudahterdaftar}}</span>
+          <span class="info-box-text">Jumlah Surat Keluaran</span>
+          <span class="info-box-number">{{$countsuratkeluaran}}</span>
 
           <div class="progress">
             <div class="progress-bar" style="width: 100%"></div>
           </div>
               <span class="progress-description">
-                <i>Data user yang telah terdaftar</i>
+                <i>Data yang telah terbuat</i>
+              </span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+    </div><!-- ./col -->
+
+    <div class="col-lg-6 col-md-3 col-xs-12">
+      <div class="info-box bg-blue">
+        <span class="info-box-icon"><i class="fa fa-smile-o"></i></span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">Sudah Approved</span>
+          <span class="info-box-number">{{$countapproved}}</span>
+
+          <div class="progress">
+            <div class="progress-bar" style="width: 100%"></div>
+          </div>
+              <span class="progress-description">
+                <i>Data yang telah diverifikasi</i>
               </span>
         </div>
         <!-- /.info-box-content -->
@@ -62,171 +83,31 @@
         <span class="info-box-icon"><i class="fa fa-frown-o"></i></span>
 
         <div class="info-box-content">
-          <span class="info-box-text">Jumlah Profile</span>
-          <span class="info-box-number">{{$countpengaduanbelumpublish}}</span>
+          <span class="info-box-text">Belum Approved</span>
+          <span class="info-box-number">{{$countbelumapproved}}</span>
 
           <div class="progress">
             <div class="progress-bar" style="width: 100%"></div>
           </div>
               <span class="progress-description">
-                 <i>Data yang belum dipublish</i>
+                 <i>Data yang belum diverifikasi</i>
               </span>
         </div>
         <!-- /.info-box-content -->
       </div>
     </div><!-- ./col -->
 
-    <div class="col-lg-6 col-md-3 col-xs-12">
-      <!-- /.info-box -->
-      <div class="info-box bg-aqua">
-        <span class="info-box-icon"><i class="fa fa-desktop"></i></span>
-
-        <div class="info-box-content">
-          <span class="info-box-text">Jumlah Kategori</span>
-          <span class="info-box-number">{{$countkategori}}</span>
-
-          <div class="progress">
-            <div class="progress-bar" style="width: 100%"></div>
-          </div>
-              <span class="progress-description">
-                <i>Data kategori yang telah terbuat</i>
-              </span>
-        </div>
-        <!-- /.info-box-content -->
-      </div>
-
-
-    </div><!-- ./col -->
   </div>
 
 
-
   <div class="row">
-    <div class="col-md-12">
-      <div class="box box-danger">
+    <div class="col-md-6">
+      <div class="box box-success">
         <div class="box-header with-border">
-          <h3 class="box-title">Grafik Penjualan Perbulan</h3>
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-          <div class="row">
-            <div class="col-md-8">
-              <p class="text-center">
-                <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
-              </p>
-
-              <div class="chart">
-                <!-- Sales Chart Canvas -->
-                <canvas id="salesChart" style="height: 180px;"></canvas>
-              </div>
-              <!-- /.chart-responsive -->
-            </div>
-            <!-- /.col -->
-            <div class="col-md-4">
-              <p class="text-center">
-                <strong>Produk Terlaris</strong>
-              </p>
-
-              <div class="progress-group">
-                <span class="progress-text">Hordeng</span>
-                <span class="progress-number"><b>160</b>/200</span>
-
-                <div class="progress sm">
-                  <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
-                </div>
-              </div>
-              <!-- /.progress-group -->
-              <div class="progress-group">
-                <span class="progress-text">Gagang Pintu</span>
-                <span class="progress-number"><b>310</b>/400</span>
-
-                <div class="progress sm">
-                  <div class="progress-bar progress-bar-red" style="width: 80%"></div>
-                </div>
-              </div>
-              <!-- /.progress-group -->
-              <div class="progress-group">
-                <span class="progress-text">Mainan Anak</span>
-                <span class="progress-number"><b>480</b>/800</span>
-
-                <div class="progress sm">
-                  <div class="progress-bar progress-bar-green" style="width: 80%"></div>
-                </div>
-              </div>
-              <!-- /.progress-group -->
-              <div class="progress-group">
-                <span class="progress-text">Baut</span>
-                <span class="progress-number"><b>250</b>/500</span>
-
-                <div class="progress sm">
-                  <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
-                </div>
-              </div>
-              <!-- /.progress-group -->
-            </div>
-            <!-- /.col -->
-          </div>
-          <!-- /.row -->
-        </div>
-        <!-- ./box-body -->
-        <div class="box-footer">
-          <div class="row">
-            <div class="col-sm-3 col-xs-6">
-              <div class="description-block border-right">
-                <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 17%</span>
-                <h5 class="description-header">$35,210.43</h5>
-                <span class="description-text">TOTAL REVENUE</span>
-              </div>
-              <!-- /.description-block -->
-            </div>
-            <!-- /.col -->
-            <div class="col-sm-3 col-xs-6">
-              <div class="description-block border-right">
-                <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> 0%</span>
-                <h5 class="description-header">$10,390.90</h5>
-                <span class="description-text">TOTAL COST</span>
-              </div>
-              <!-- /.description-block -->
-            </div>
-            <!-- /.col -->
-            <div class="col-sm-3 col-xs-6">
-              <div class="description-block border-right">
-                <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 20%</span>
-                <h5 class="description-header">$24,813.53</h5>
-                <span class="description-text">TOTAL PROFIT</span>
-              </div>
-              <!-- /.description-block -->
-            </div>
-            <!-- /.col -->
-            <div class="col-sm-3 col-xs-6">
-              <div class="description-block">
-                <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 18%</span>
-                <h5 class="description-header">1200</h5>
-                <span class="description-text">GOAL COMPLETIONS</span>
-              </div>
-              <!-- /.description-block -->
-            </div>
-          </div>
-          <!-- /.row -->
-        </div>
-        <!-- /.box-footer -->
-      </div>
-      <!-- /.box -->
-    </div>
-    <!-- /.col -->
-  </div>
-  <!-- /.row -->
-
-  <div class="row">
-    <div class="col-md-8">
-      <div class="box box-danger">
-        <div class="box-header with-border">
-          <h3 class="box-title">Client</h3>
+          <h3 class="box-title">Surat Masukan</h3>
 
           <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            <span class="label label-warning">{{$recordsuratmasukan}} Surat Masukan Baru</span>
           </div>
         </div>
         <!-- /.box-header -->
@@ -235,24 +116,20 @@
             <table class="table no-margin">
               <thead>
               <tr>
-                <th>Nama Client</th>
-                <th>Keterangan Client</th>
-                <th>Status Client</th>
+                <th>Nama Pengirim</th>
+                <th>Nomor Surat</th>
+                <th>Perihal</th>
               </tr>
               </thead>
               <tbody>
-              @foreach($getclient as $key)
+              @foreach($getsuratmasukan as $key)
                 <tr>
-                  <td>{{$key->nama_client}}</td>
+                  <td>{{$key->nama_pegawai}}</td>
                   <td>
-                    {{ str_limit($key->keterangan_client, $limit = 100) }}
+                    {{ $key->nomor_surat }}
                   </td>
                   <td>
-                    @if($key->flag_client=="1")
-                      <span class="label label-info">Aktif</span></td>
-                    @else
-                      <span class="label label-success">Tidak Aktif</span>
-                    @endif
+                    {{ $key->perihal }}
                   </td>
                 </tr>
               @endforeach
@@ -263,47 +140,53 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer clearfix">
-          <a href="{{url('admin/lihat-client')}}" class="btn btn-sm btn-info btn-flat pull-right">Lihat Semua Client</a>
+          <a href="{{url('admin/lihat-client')}}" class="btn btn-sm btn-info btn-flat pull-right">Lihat Semua Surat Masukan</a>
         </div>
         <!-- /.box-footer -->
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="box box-danger">
-          <div class="box-header with-border">
-            <h3 class="box-title">Pengguna</h3>
-
-            <div class="box-tools pull-right">
-              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-              </button>
-              <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-              </button>
-            </div>
+    <div class="col-md-6">
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">Surat Keluaran</h3>
+          <div class="box-tools pull-right">
+            <span class="label label-warning">{{$recordsuratkeluaran}} Surat Keluaran Baru</span>
           </div>
-          <!-- /.box-header -->
-          <div class="box-body no-padding">
-            <ul class="users-list clearfix">
-              @foreach ($users as $key)
-                <li>
-                  @if($key->url_foto == null)
-                    <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/userdefault.png') }}" alt="User Avatar">
-                  @else
-                    <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/'.$key->url_foto) }}" alt="{{$key->name}}">
-                  @endif
-                  <a class="users-list-name">{{ $key->name}}</a>
-                </li>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="table-responsive">
+            <table class="table no-margin">
+              <thead>
+              <tr>
+                <th>Nama Pengirim</th>
+                <th>Nomor Surat</th>
+                <th>Perihal</th>
+              </tr>
+              </thead>
+              <tbody>
+                @foreach($getsuratkeluaran as $key)
+                <tr>
+                  <td>{{$key->nama_pegawai}}</td>
+                  <td>
+                    {{ $key->nomor_surat }}
+                  </td>
+                  <td>
+                    {{ $key->perihal }}
+                  </td>
+                </tr>
               @endforeach
-            </ul>
-            <!-- /.users-list -->
+              </tbody>
+            </table>
           </div>
-          <!-- /.box-body -->
-          <div class="box-footer">
-            <div class="pagination pagination-sm no-margin pull-right">
-              {{ $users->links() }}
-            </div>
+          <!-- /.table-responsive -->
         </div>
-          <!-- /.box-footer -->
+        <!-- /.box-body -->
+        <div class="box-footer clearfix">
+          <a href="{{url('admin/lihat-client')}}" class="btn btn-sm btn-info btn-flat pull-right">Lihat Semua Surat Keluaran</a>
         </div>
+        <!-- /.box-footer -->
+      </div>
     </div>
   </div>
 

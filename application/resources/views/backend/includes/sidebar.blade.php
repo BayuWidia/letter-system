@@ -46,43 +46,22 @@
     </li>
     <li class="treeview">
       <a href="#" id="colortreemenulihref">
-        <i class="fa fa-desktop"></i>
-        <span>Profile Panca Agung</span>
+        <i class="fa fa-mortar-board"></i>
+        <span>Kelola Jabatan</span>
         <i class="fa fa-angle-left pull-right"></i>
       </a>
       <ul class="treeview-menu">
-        <li><a href="{{url('admin/lihat-profile')}}"><i class="fa fa-circle-o"></i> List Data Profile</a></li>
-        <li><a href="{{route('profile.kategori.lihat')}}"><i class="fa fa-circle-o"></i> Tambah Kategori Profile</a></li>
+        <li><a href="{{url('admin/kelola-jabatan')}}"><i class="fa fa-circle-o"></i> Kelola Jabatan</a></li>
       </ul>
     </li>
     <li class="treeview">
       <a href="#" id="colortreemenulihref">
-        <i class="fa fa-star"></i>
-        <span>Manajemen Features</span>
+        <i class="fa fa-bank"></i>
+        <span>Manajemen Skpd</span>
         <i class="fa fa-angle-left pull-right"></i>
       </a>
       <ul class="treeview-menu">
-        <li><a href="{{url('admin/kelola-features')}}"><i class="fa fa-circle-o"></i> Kelola Features</a></li>
-      </ul>
-    </li>
-    <li class="treeview">
-      <a href="#" id="colortreemenulihref">
-        <i class="fa fa-wrench"></i>
-        <span>Manajemen Services</span>
-        <i class="fa fa-angle-left pull-right"></i>
-      </a>
-      <ul class="treeview-menu">
-        <li><a href="{{url('admin/kelola-services')}}"><i class="fa fa-circle-o"></i> Kelola Services</a></li>
-      </ul>
-    </li>
-    <li class="treeview">
-      <a href="#" id="colortreemenulihref">
-        <i class="fa fa-building-o"></i>
-        <span>Manajemen Client</span>
-        <i class="fa fa-angle-left pull-right"></i>
-      </a>
-      <ul class="treeview-menu">
-        <li><a href="{{url('admin/lihat-client')}}"><i class="fa fa-circle-o"></i> Kelola Client</a></li>
+        <li><a href="{{url('admin/kelola-skpd')}}"><i class="fa fa-circle-o"></i> Kelola Skpd</a></li>
       </ul>
     </li>
     <li class="treeview">
@@ -95,17 +74,6 @@
         <li><a href="{{url('admin/kelola-akun')}}"><i class="fa fa-circle-o"></i> Kelola Akun</a></li>
       </ul>
     </li>
-    <li class="treeview">
-      <a href="#" id="colortreemenulihref">
-        <i class="fa fa-image"></i>
-        <span>Galeri & Slider</span>
-        <i class="fa fa-angle-left pull-right"></i>
-      </a>
-      <ul class="treeview-menu">
-        <li><a href="{{url('admin/kelola-slider')}}"><i class="fa fa-circle-o"></i> Kelola Slider</a></li>
-        <li><a href="{{url('admin/kelola-galeri')}}"><i class="fa fa-circle-o"></i> Kelola Galeri Foto</a></li>
-        <li><a href="{{url('admin/kelola-video')}}"><i class="fa fa-circle-o"></i> Kelola Galeri Video</a></li>
-      </ul>
-    </li>
+    
   </ul>
 </section>

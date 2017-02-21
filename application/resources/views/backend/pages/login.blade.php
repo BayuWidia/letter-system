@@ -1,55 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
- <meta charset="utf-8">
+<html>
+  <head>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Panca Agung</title>
+    <title>Web Management Surat | Pemerintahan Kabupaten Tangerang</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('dist/css/AdminLTE.css')}}">
-  <link rel="stylesheet" href="{{asset('theme/css/customedoomels.css')}}">
-</head>
-<body>
-  
+    <link rel="stylesheet" href="{{asset('bootstrap/css/custom9tins.css')}}">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="{{asset('plugins/iCheck/square/blue.css')}}">
 
-<div class="container">
-  <div class="main">
-    <div class="left" style="padding-top: 5.5%">
-      <img src="{{asset('images/pancaagung.png')}}" />
-    </div> <!--/ .left -->
+  </head>
+  <body class="skin-blue-light hold-transition login-page">
+    <div class="login-box">
 
-    <div class="right">
-      <div style="background-color:#FFFFFF;border-style:dashed;border-width:thin;">
-        <div class="login-box-body">
-          <p class="login-box-msg">Silahkan lakukan proses login</p>
-          
-          <form action="{{route('login')}}" method="post">
-            {!! csrf_field() !!}
-            <div class="form-group has-feedback">
-              <input name="email" type="text" class="form-control" placeholder="Username">
-              <span class="glyphicon glyphicon-user form-control-feedback"></span>
-            </div>
-            <div class="form-group has-feedback">
-              <input name="password" type="password" class="form-control" placeholder="Password">
-              <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-            </div>
-            <div class="row">
-              <div class="col-xs-6">
-                <button type="reset" class="btn btn-danger btn-block btn-flat">Reset</button>
-              </div><!-- /.col -->
-              <div class="col-xs-6">
-                <button type="submit" class="btn btn-primary btn-block btn-flat">Log In</button>
-              </div><!-- /.col -->
-            </div>
-          </form>
-        </div><!-- /.login-box-body -->
+      <div class="login-logo-custom">
+        <div class="logo-custom">
+          <img style="float:left;" src="{{asset('images/logo.png')}}" width="50px;"; />
+        </div>
+        <div class="logo-name-custom">
+          <div class="head-logo-name">
+            Web Management Surat
+          </div>
+          <div>
+            Pemerintahan Kabupaten Tangerang
+          </div>
+        </div>
       </div>
-    </div> <!--/ .right -->
-  </div> <!--/ .main -->
-</div>
-  <h4 style="text-align: center"><strong>Copyright © 2017 <a href="">Panca Agung</a>.</strong> All rights reserved.</h4>
-</body>
+      <br>
+      <div class="login-box-body">
+        <p class="login-box-msg">Silahkan lakukan proses login</p>
+        <form action="{{route('login')}}" method="post">
+          {!! csrf_field() !!}
+          <div class="form-group has-feedback">
+            <input name="email" type="text" class="form-control" placeholder="Email">
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <input name="password" type="password" class="form-control" placeholder="Password">
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+          <div class="row">
+            <div class="col-xs-8">
+              
+            </div><!-- /.col -->
+            <div class="col-xs-4">
+              <button type="submit" class="btn btn-primary btn-block btn-flat">Log In</button>
+            </div><!-- /.col -->
+          </div>
+        </form>
+      </div><!-- /.login-box-body -->
+    </div><!-- /.login-box -->
+
+    <!-- jQuery 2.1.4 -->
+    <script src="{{asset('plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
+    <!-- iCheck -->
+    <script src="{{asset('plugins/iCheck/icheck.min.js')}}"></script>
+    <script>
+      $(function () {
+        $('input').iCheck({
+          checkboxClass: 'icheckbox_square-blue',
+          radioClass: 'iradio_square-blue',
+          increaseArea: '20%' // optional
+        });
+      });
+    </script>
+  </body>
 </html>
