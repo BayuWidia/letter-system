@@ -86,21 +86,21 @@ class SuratMasukanController extends Controller
 
   public function tambah()
   {
-     $getpegawai = Pegawai::select('*')
-                ->where('flag_pegawai', '1')
-                ->whereNotIn('id', [Auth::user()->id_pegawai])->get();
-      // $getskpd  = DB::table('skpd')
-      //               ->select('nama_skpd')
-      //               ->where('skpd.flag_skpd', 1)
-      //               ->get();
+     // $getpegawai = Pegawai::select('*')
+     //            ->where('flag_pegawai', '1')
+     //            ->whereNotIn('id', [Auth::user()->id_pegawai])->get();
+      $getskpd  = DB::table('skpd')
+                    ->select('nama_skpd')
+                    ->where('skpd.flag_skpd', 1)
+                    ->get();
 
-      // $getpegawai = DB::table('skpd')
-      //               ->join('pegawai', 'pegawai.id_skpd', '=', 'skpd.id')
-      //               ->select('pegawai.id','pegawai.nama_pegawai as nama_pegawai', 'skpd.nama_skpd as nama_skpd')
-      //               ->where('skpd.flag_skpd', 1)
-      //               ->get();
+      $getpegawai = DB::table('skpd')
+                    ->join('pegawai', 'pegawai.id_skpd', '=', 'skpd.id')
+                    ->select('pegawai.id','pegawai.nama_pegawai as nama_pegawai', 'skpd.nama_skpd as nama_skpd')
+                    ->where('skpd.flag_skpd', 1)
+                    ->get();
                 // dd($getpegawai);
-    return view('backend/pages/tambahsuratmasuk')->with('getpegawai', $getpegawai);
+    return view('backend/pages/tambahsuratmasuk')->with('getskpd', $getskpd)->with('getpegawai', $getpegawai);
   }
 
   public function store(Request $request)
@@ -159,24 +159,24 @@ class SuratMasukanController extends Controller
   {
     $editsuratmasukan = SuratMasukan::find($id);
 
-    $getpegawai = Pegawai::select('*')
-                ->where('flag_pegawai', '1')
-                ->whereNotIn('id', [Auth::user()->id_pegawai])->get();
+    // $getpegawai = Pegawai::select('*')
+    //             ->where('flag_pegawai', '1')
+    //             ->whereNotIn('id', [Auth::user()->id_pegawai])->get();
 
-    // $getskpd  = DB::table('skpd')
-    //                 ->select('nama_skpd')
-    //                 ->where('skpd.flag_skpd', 1)
-    //                 ->get();
+    $getskpd  = DB::table('skpd')
+                    ->select('nama_skpd')
+                    ->where('skpd.flag_skpd', 1)
+                    ->get();
 
-    // $getpegawai = DB::table('skpd')
-    //               ->join('pegawai', 'pegawai.id_skpd', '=', 'skpd.id')
-    //               ->select('pegawai.id','pegawai.nama_pegawai as nama_pegawai', 'skpd.nama_skpd as nama_skpd')
-    //               ->where('skpd.flag_skpd', 1)
-    //               ->get();
+    $getpegawai = DB::table('skpd')
+                  ->join('pegawai', 'pegawai.id_skpd', '=', 'skpd.id')
+                  ->select('pegawai.id','pegawai.nama_pegawai as nama_pegawai', 'skpd.nama_skpd as nama_skpd')
+                  ->where('skpd.flag_skpd', 1)
+                  ->get();
 
     return view('backend/pages/tambahsuratmasuk')
       ->with('getpegawai', $getpegawai)
-      // ->with('getskpd', $getskpd)
+      ->with('getskpd', $getskpd)
       ->with('editsuratmasukan', $editsuratmasukan);
   }
 

@@ -74,25 +74,38 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label">Pengirim</label>
                 <div class="col-sm-5">
-                  <select class="form-control select2" name="id_pegawai">
-                    <option>-- Pilih --</option>
-                      @if(!$getpegawai->isEmpty())
+                  <select class="form-control select2" name="id_pegawai" style="width: 100%;">
+                    <option value="">-- Pilih Pengirim --</option>                 
+                    @if($getpegawai != null)
                         @if(isset($editsuratkeluaran))
-                          @foreach($getpegawai as $key)
-                            @if($editsuratkeluaran->id_pegawai==$key->id)
-                              <option value="{{$key->id}}" selected="true">{{$key->nama_pegawai}}</option>
-                            @else
-                              <option value="{{$key->id}}">{{$key->nama_pegawai}}</option>
-                            @endif
+                          @foreach($getskpd as $valSKpd)
+                            <optgroup label="{{ $valSKpd->nama_skpd }}">
+                              @foreach($getpegawai as $valPeg)
+                                @if($valSKpd->nama_skpd === $valPeg->nama_skpd)
+                                  @if($editsuratkeluaran->id_pegawai==$valPeg->id)
+                                    <option value="{{$valPeg->id}}" selected="true">{{$valPeg->nama_pegawai}}</option>
+                                  @else
+                                    <option value="{{$valPeg->id}}">{{$valPeg->nama_pegawai}}</option>
+                                  @endif
+                                @endif
+                                
+                              @endforeach
+                            </optgroup>
                           @endforeach
                         @else
-                          @foreach($getpegawai as $key)
-                            <option value="{{$key->id}}">{{$key->nama_pegawai}}</option>
+                          @foreach($getskpd as $valSKpd)
+                            <optgroup label="{{ $valSKpd->nama_skpd }}">
+                              @foreach($getpegawai as $valPeg)
+                                @if($valSKpd->nama_skpd === $valPeg->nama_skpd)
+                                  <option value="{{ $valPeg->id}}">{{ $valPeg->nama_pegawai}}</option>
+                                @endif
+                              @endforeach
+                            </optgroup>
                           @endforeach
                         @endif
                       @endif
                   </select>
-                  @if($getpegawai->isEmpty())
+                   @if($getpegawai == null)
                     <span style="color:red;">* Anda belum memiliki pegawai</span>
                   @endif
                   @if(isset($editsuratkeluaran))
@@ -105,16 +118,16 @@
                 <div class="col-sm-5">
                   <select class="form-control" name="sifat_surat">
                     <option>-- Pilih --</option>
-                        @if(isset($editproject))
-                            @if($editproject->sifat_surat=='Rahasia')
+                        @if(isset($editsuratkeluaran))
+                            @if($editsuratkeluaran->sifat_surat=='Rahasia')
                               <option value="Rahasia" selected="true">Rahasia</option>
                               <option value="Segera">Segera</option>
                               <option value="Dinas">Dinas</option>
-                            @elseif($editproject->sifat_surat=='Segera')
+                            @elseif($editsuratkeluaran->sifat_surat=='Segera')
                               <option value="Rahasia">Rahasia</option>
                               <option value="Segera" selected="true">Segera</option>
                               <option value="Dinas">Dinas</option>
-                            @elseif($editproject->sifat_surat=='Dinas')
+                            @elseif($editsuratkeluaran->sifat_surat=='Dinas')
                               <option value="Rahasia">Rahasia</option>
                               <option value="Segera">Segera</option>
                               <option value="Dinas" selected="true">Dinas</option>

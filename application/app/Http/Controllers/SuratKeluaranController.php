@@ -84,11 +84,21 @@ class SuratKeluaranController extends Controller
 
   public function tambah()
   {
-     $getpegawai = Pegawai::select('*')
-                ->where('flag_pegawai', '1')
-                ->whereNotIn('id', [Auth::user()->id_pegawai])->get();
+     // $getpegawai = Pegawai::select('*')
+     //            ->where('flag_pegawai', '1')
+     //            ->whereNotIn('id', [Auth::user()->id_pegawai])->get();
 
-    return view('backend/pages/tambahsuratkeluar')->with('getpegawai', $getpegawai);
+      $getskpd  = DB::table('skpd')
+                    ->select('nama_skpd')
+                    ->where('skpd.flag_skpd', 1)
+                    ->get();
+
+      $getpegawai = DB::table('skpd')
+                    ->join('pegawai', 'pegawai.id_skpd', '=', 'skpd.id')
+                    ->select('pegawai.id','pegawai.nama_pegawai as nama_pegawai', 'skpd.nama_skpd as nama_skpd')
+                    ->where('skpd.flag_skpd', 1)
+                    ->get();
+    return view('backend/pages/tambahsuratkeluar')->with('getskpd', $getskpd)->with('getpegawai', $getpegawai);
   }
 
   public function store(Request $request)
@@ -148,11 +158,22 @@ class SuratKeluaranController extends Controller
   {
     $editsuratkeluaran = SuratKeluaran::find($id);
 
-    $getpegawai = Pegawai::select('*')
-                ->where('flag_pegawai', '1')
-                ->whereNotIn('id', [Auth::user()->id_pegawai])->get();
+    // $getpegawai = Pegawai::select('*')
+    //             ->where('flag_pegawai', '1')
+    //             ->whereNotIn('id', [Auth::user()->id_pegawai])->get();
+      $getskpd  = DB::table('skpd')
+                    ->select('nama_skpd')
+                    ->where('skpd.flag_skpd', 1)
+                    ->get();
+
+      $getpegawai = DB::table('skpd')
+                    ->join('pegawai', 'pegawai.id_skpd', '=', 'skpd.id')
+                    ->select('pegawai.id','pegawai.nama_pegawai as nama_pegawai', 'skpd.nama_skpd as nama_skpd')
+                    ->where('skpd.flag_skpd', 1)
+                    ->get();
 
     return view('backend/pages/tambahsuratkeluaran')
+      ->with('getskpd', $getskpd)
       ->with('getpegawai', $getpegawai)
       ->with('editsuratkeluaran', $editsuratkeluaran);
   }
