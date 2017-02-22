@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap-tagsinput.css')}}">
   <script src="{{asset('plugins/ckeditor/ckeditor.js')}}"></script>
   <script src="{{asset('plugins/ckfinder/ckfinder.js')}}"></script>
-  <link rel="stylesheet" href="{{asset('plugins/select2/select2.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('plugins/select2/select2.min.css') }}">
 @stop
 
 @section('breadcrumb')
@@ -226,7 +226,8 @@
   <script src="{{asset('dist/js/app.min.js')}}"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="{{asset('dist/js/demo.js')}}"></script>
-  <script src="{{asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"'></script>  <script src="{{asset('plugins/select2/select2.full.min.js')}}"></script>
+  <script src="{{asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"'></script>  
+  <script src="{{ asset('plugins/select2/select2.full.min.js')}}"></script>
 
   <script type="text/javascript">
   $(".select2").select2();

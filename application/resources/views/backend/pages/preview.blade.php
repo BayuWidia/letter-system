@@ -41,7 +41,9 @@
           <hr/>
           Perihal : {{$getsurat->perihal}}
           <hr/>
-          Catatan : <?php echo $getsurat->catatan ?>
+          Catatan : 
+          <textarea name="tanggapan" class="form-control" rows="5" cols="40" readonly="true" 
+            style="border:1px solid #DD4B39;margin-top:5px;"><?php echo $getsurat->catatan ?></textarea>
         </div><!-- /.box-body -->
 
         <div class="box-footer">
