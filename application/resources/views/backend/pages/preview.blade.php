@@ -35,17 +35,13 @@
         </div><!-- /.box-header -->
         <div class="box-body">
           <!-- post text -->
-          Perihal : {{$getsurat->perihal}}
-          <hr/>
-          Catatan : <?php echo $getsurat->catatan ?>
-          <hr/>
-          Tanggal Approved : {{ \Carbon\Carbon::parse($getsurat->tanggal_terima)->format('d-M-y')}}
-          <hr/>
-          Jabatan : {{$getsurat->nama_jabatan}}
-          <hr/>
           SKPD : {{$getsurat->nama_skpd}}
           <hr/>
           Jabatan : {{$getsurat->nama_jabatan}}
+          <hr/>
+          Perihal : {{$getsurat->perihal}}
+          <hr/>
+          Catatan : <?php echo $getsurat->catatan ?>
         </div><!-- /.box-body -->
 
         <div class="box-footer">

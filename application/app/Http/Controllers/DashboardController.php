@@ -131,26 +131,26 @@ class DashboardController extends Controller
     } else if (Auth::user()->level=="3") {
       if (Auth::user()->disposisi=="1") {
 
-          $countsuratmasukan = SuratMasukan::where('surat_masukan.id_pegawai', '=', Auth::user()->id_pegawai)
-                              ->where(function($query) {
+          $countsuratmasukan = SuratMasukan::
+                              where(function($query) {
                                 $query->where('surat_masukan.disposisi_staff', '1')
-                                  ->orWhere('surat_masukan.flag_approved', '1');
+                                  ->Where('surat_masukan.flag_approved', '1');
                               })
                               ->count();
-          $countsuratkeluaran = SuratKeluaran::where('surat_keluaran.id_pegawai', '=', Auth::user()->id_pegawai)
-                              ->where(function($query) {
+          $countsuratkeluaran = SuratKeluaran::
+                              where(function($query) {
                                 $query->where('surat_keluaran.disposisi_staff', '1')
-                                  ->orWhere('surat_keluaran.flag_approved', '1');
+                                  ->Where('surat_keluaran.flag_approved', '1');
                               })->count();
 
           $getsuratmasukan = DB::table('surat_masukan')->select('surat_masukan.*','pegawai.id as id_pegawai','pegawai.nama_pegawai','skpd.id as id_skpd','skpd.nama_skpd')
                   ->leftJoin('pegawai', 'surat_masukan.id_pegawai', '=', 'pegawai.id')
                   ->leftJoin('skpd', 'pegawai.id_skpd', '=', 'skpd.id')
                   ->where('surat_masukan.tanggal_terima', '=', date('Y-m-d'))
-                  ->where('surat_masukan.id_pegawai', '=', Auth::user()->id_pegawai)
+                  // ->where('surat_masukan.id_pegawai', '=', Auth::user()->id_pegawai)
                   ->where(function($query) {
                             $query->where('surat_masukan.disposisi_staff', '1')
-                              ->orWhere('surat_masukan.flag_approved', '1');
+                              ->Where('surat_masukan.flag_approved', '1');
                           })
                   ->orderby('surat_masukan.tanggal_terima', 'desc')
                   ->get();
@@ -159,33 +159,33 @@ class DashboardController extends Controller
                   ->leftJoin('pegawai', 'surat_keluaran.id_pegawai', '=', 'pegawai.id')
                   ->leftJoin('skpd', 'pegawai.id_skpd', '=', 'skpd.id')
                   ->where('surat_keluaran.tanggal_terima', '=', date('Y-m-d'))
-                  ->where('surat_keluaran.id_pegawai', '=', Auth::user()->id_pegawai)
+                  // ->where('surat_keluaran.id_pegawai', '=', Auth::user()->id_pegawai)
                   ->where(function($query) {
                             $query->where('surat_keluaran.disposisi_staff', '1')
-                              ->orWhere('surat_keluaran.flag_approved', '1');
+                              ->Where('surat_keluaran.flag_approved', '1');
                           })
                   ->orderby('surat_keluaran.tanggal_terima', 'desc')
                   ->get();
       } else if (Auth::user()->disposisi=="2") {
-          $countsuratmasukan = SuratMasukan::where('surat_masukan.id_pegawai', '=', Auth::user()->id_pegawai)
-                              ->where(function($query) {
+          $countsuratmasukan = SuratMasukan::
+                              where(function($query) {
                                 $query->where('surat_masukan.disposisi_bidang', '1')
-                                  ->orWhere('surat_masukan.flag_approved', '1');
+                                  ->Where('surat_masukan.flag_approved', '1');
                               })->count();
-          $countsuratkeluaran = SuratKeluaran::where('surat_keluaran.id_pegawai', '=', Auth::user()->id_pegawai)
-                              ->where(function($query) {
+          $countsuratkeluaran = SuratKeluaran::
+                              where(function($query) {
                                 $query->where('surat_keluaran.disposisi_bidang', '1')
-                                  ->orWhere('surat_keluaran.flag_approved', '1');
+                                  ->Where('surat_keluaran.flag_approved', '1');
                               })->count();
 
         $getsuratmasukan = DB::table('surat_masukan')->select('surat_masukan.*','pegawai.id as id_pegawai','pegawai.nama_pegawai','skpd.id as id_skpd','skpd.nama_skpd')
                   ->leftJoin('pegawai', 'surat_masukan.id_pegawai', '=', 'pegawai.id')
                   ->leftJoin('skpd', 'pegawai.id_skpd', '=', 'skpd.id')
                   ->where('surat_masukan.tanggal_terima', '=', date('Y-m-d'))
-                  ->where('surat_masukan.id_pegawai', '=', Auth::user()->id_pegawai)
+                  // ->where('surat_masukan.id_pegawai', '=', Auth::user()->id_pegawai)
                   ->where(function($query) {
                             $query->where('surat_masukan.disposisi_bidang', '1')
-                              ->orWhere('surat_masukan.flag_approved', '1');
+                              ->Where('surat_masukan.flag_approved', '1');
                           })
                   ->orderby('surat_masukan.tanggal_terima', 'desc')
                   ->get();
@@ -194,33 +194,33 @@ class DashboardController extends Controller
                   ->leftJoin('pegawai', 'surat_keluaran.id_pegawai', '=', 'pegawai.id')
                   ->leftJoin('skpd', 'pegawai.id_skpd', '=', 'skpd.id')
                   ->where('surat_keluaran.tanggal_terima', '=', date('Y-m-d'))
-                  ->where('surat_keluaran.id_pegawai', '=', Auth::user()->id_pegawai)
+                  // ->where('surat_keluaran.id_pegawai', '=', Auth::user()->id_pegawai)
                   ->where(function($query) {
                             $query->where('surat_keluaran.disposisi_bidang', '1')
-                              ->orWhere('surat_keluaran.flag_approved', '1');
+                              ->Where('surat_keluaran.flag_approved', '1');
                           })
                   ->orderby('surat_keluaran.tanggal_terima', 'desc')
                   ->get();
       } else if (Auth::user()->disposisi=="3") {
-         $countsuratmasukan = SuratMasukan::where('surat_masukan.id_pegawai', '=', Auth::user()->id_pegawai)
-                              ->where(function($query) {
+         $countsuratmasukan = SuratMasukan::
+                              where(function($query) {
                                 $query->where('surat_masukan.disposisi_sekdis', '1')
-                                  ->orWhere('surat_masukan.flag_approved', '1');
+                                  ->Where('surat_masukan.flag_approved', '1');
                               })->count();
-          $countsuratkeluaran = SuratKeluaran::where('surat_keluaran.id_pegawai', '=', Auth::user()->id_pegawai)
-                              ->where(function($query) {
+          $countsuratkeluaran = SuratKeluaran::
+                              where(function($query) {
                                 $query->where('surat_keluaran.disposisi_sekdis', '1')
-                                  ->orWhere('surat_keluaran.flag_approved', '1');
+                                  ->Where('surat_keluaran.flag_approved', '1');
                               })->count();
 
           $getsuratmasukan = DB::table('surat_masukan')->select('surat_masukan.*','pegawai.id as id_pegawai','pegawai.nama_pegawai','skpd.id as id_skpd','skpd.nama_skpd')
                   ->leftJoin('pegawai', 'surat_masukan.id_pegawai', '=', 'pegawai.id')
                   ->leftJoin('skpd', 'pegawai.id_skpd', '=', 'skpd.id')
                   ->where('surat_masukan.tanggal_terima', '=', date('Y-m-d'))
-                  ->where('surat_masukan.id_pegawai', '=', Auth::user()->id_pegawai)
+                  // ->where('surat_masukan.id_pegawai', '=', Auth::user()->id_pegawai)
                   ->where(function($query) {
                             $query->where('surat_masukan.disposisi_sekdis', '1')
-                              ->orWhere('surat_masukan.flag_approved', '1');
+                              ->Where('surat_masukan.flag_approved', '1');
                           })
                   ->orderby('surat_masukan.tanggal_terima', 'desc')
                   ->get();
@@ -229,10 +229,10 @@ class DashboardController extends Controller
                   ->leftJoin('pegawai', 'surat_keluaran.id_pegawai', '=', 'pegawai.id')
                   ->leftJoin('skpd', 'pegawai.id_skpd', '=', 'skpd.id')
                   ->where('surat_keluaran.tanggal_terima', '=', date('Y-m-d'))
-                  ->where('surat_keluaran.id_pegawai', '=', Auth::user()->id_pegawai)
+                  // ->where('surat_keluaran.id_pegawai', '=', Auth::user()->id_pegawai)
                   ->where(function($query) {
                             $query->where('surat_keluaran.disposisi_sekdis', '1')
-                              ->orWhere('surat_keluaran.flag_approved', '1');
+                              ->Where('surat_keluaran.flag_approved', '1');
                           })
                   ->orderby('surat_keluaran.tanggal_terima', 'desc')
                   ->get();

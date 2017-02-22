@@ -5,7 +5,7 @@ SUPER ADMIN
 	BIDANG	: somaatmaja@gmail.com
 	SEKDIS	: bayuwidyas@gmail.com
 =======================================================	
-ADMINISTRATOR
+ADMINISTRATOR / TU
 	STAFF	: ariamustofa@gmail.com
 	BIDANG	: lilismulyani@gmail.com
 	SEKDIS	: achirguntur@gmail.com

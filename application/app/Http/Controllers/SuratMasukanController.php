@@ -47,10 +47,10 @@ class SuratMasukanController extends Controller
           $getsuratmasukan = DB::table('surat_masukan')->select('surat_masukan.*','pegawai.id as id_pegawai','pegawai.nama_pegawai','skpd.id as id_skpd','skpd.nama_skpd')
                   ->leftJoin('pegawai', 'surat_masukan.id_pegawai', '=', 'pegawai.id')
                   ->leftJoin('skpd', 'pegawai.id_skpd', '=', 'skpd.id')
-                  ->where('surat_masukan.id_pegawai', '=', Auth::user()->id_pegawai)
+                  // ->where('surat_masukan.id_pegawai', '=', Auth::user()->id_pegawai)
                   ->where(function($query) {
                             $query->where('surat_masukan.disposisi_staff', '1')
-                              ->orWhere('surat_masukan.flag_approved', '1');
+                              ->Where('surat_masukan.flag_approved', '1');
                           })
                   ->orderby('surat_masukan.tanggal_terima', 'desc')
                   ->groupby('surat_masukan.id_pegawai')
@@ -59,10 +59,10 @@ class SuratMasukanController extends Controller
         $getsuratmasukan = DB::table('surat_masukan')->select('surat_masukan.*','pegawai.id as id_pegawai','pegawai.nama_pegawai','skpd.id as id_skpd','skpd.nama_skpd')
                   ->leftJoin('pegawai', 'surat_masukan.id_pegawai', '=', 'pegawai.id')
                   ->leftJoin('skpd', 'pegawai.id_skpd', '=', 'skpd.id')
-                  ->where('surat_masukan.id_pegawai', '=', Auth::user()->id_pegawai)
+                  // ->where('surat_masukan.id_pegawai', '=', Auth::user()->id_pegawai)
                   ->where(function($query) {
                             $query->where('surat_masukan.disposisi_bidang', '1')
-                              ->orWhere('surat_masukan.flag_approved', '1');
+                              ->Where('surat_masukan.flag_approved', '1');
                           })
                   ->orderby('surat_masukan.tanggal_terima', 'desc')
                   ->groupby('surat_masukan.id_pegawai')
@@ -71,10 +71,10 @@ class SuratMasukanController extends Controller
         $getsuratmasukan = DB::table('surat_masukan')->select('surat_masukan.*','pegawai.id as id_pegawai','pegawai.nama_pegawai','skpd.id as id_skpd','skpd.nama_skpd')
                   ->leftJoin('pegawai', 'surat_masukan.id_pegawai', '=', 'pegawai.id')
                   ->leftJoin('skpd', 'pegawai.id_skpd', '=', 'skpd.id')
-                  ->where('surat_masukan.id_pegawai', '=', Auth::user()->id_pegawai)
+                  // ->where('surat_masukan.id_pegawai', '=', Auth::user()->id_pegawai)
                   ->where(function($query) {
                             $query->where('surat_masukan.disposisi_sekdis', '1')
-                              ->orWhere('surat_masukan.flag_approved', '1');
+                              ->Where('surat_masukan.flag_approved', '1');
                           })
                   ->orderby('surat_masukan.tanggal_terima', 'desc')
                   ->groupby('surat_masukan.id_pegawai')
@@ -89,7 +89,17 @@ class SuratMasukanController extends Controller
      $getpegawai = Pegawai::select('*')
                 ->where('flag_pegawai', '1')
                 ->whereNotIn('id', [Auth::user()->id_pegawai])->get();
+      // $getskpd  = DB::table('skpd')
+      //               ->select('nama_skpd')
+      //               ->where('skpd.flag_skpd', 1)
+      //               ->get();
 
+      // $getpegawai = DB::table('skpd')
+      //               ->join('pegawai', 'pegawai.id_skpd', '=', 'skpd.id')
+      //               ->select('pegawai.id','pegawai.nama_pegawai as nama_pegawai', 'skpd.nama_skpd as nama_skpd')
+      //               ->where('skpd.flag_skpd', 1)
+      //               ->get();
+                // dd($getpegawai);
     return view('backend/pages/tambahsuratmasuk')->with('getpegawai', $getpegawai);
   }
 
@@ -153,8 +163,20 @@ class SuratMasukanController extends Controller
                 ->where('flag_pegawai', '1')
                 ->whereNotIn('id', [Auth::user()->id_pegawai])->get();
 
+    // $getskpd  = DB::table('skpd')
+    //                 ->select('nama_skpd')
+    //                 ->where('skpd.flag_skpd', 1)
+    //                 ->get();
+
+    // $getpegawai = DB::table('skpd')
+    //               ->join('pegawai', 'pegawai.id_skpd', '=', 'skpd.id')
+    //               ->select('pegawai.id','pegawai.nama_pegawai as nama_pegawai', 'skpd.nama_skpd as nama_skpd')
+    //               ->where('skpd.flag_skpd', 1)
+    //               ->get();
+
     return view('backend/pages/tambahsuratmasuk')
       ->with('getpegawai', $getpegawai)
+      // ->with('getskpd', $getskpd)
       ->with('editsuratmasukan', $editsuratmasukan);
   }
 
