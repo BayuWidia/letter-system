@@ -47,10 +47,11 @@ class SuratMasukanController extends Controller
           $getsuratmasukan = DB::table('surat_masukan')->select('surat_masukan.*','pegawai.id as id_pegawai','pegawai.nama_pegawai','skpd.id as id_skpd','skpd.nama_skpd')
                   ->leftJoin('pegawai', 'surat_masukan.id_pegawai', '=', 'pegawai.id')
                   ->leftJoin('skpd', 'pegawai.id_skpd', '=', 'skpd.id')
-                  ->where([
-                            ['surat_masukan.disposisi_staff', '1'],
-                            ['surat_masukan.flag_approved', '1']
-                          ])
+                  ->where('surat_masukan.id_pegawai', '=', Auth::user()->id_pegawai)
+                  ->where(function($query) {
+                            $query->where('surat_masukan.disposisi_staff', '1')
+                              ->orWhere('surat_masukan.flag_approved', '1');
+                          })
                   ->orderby('surat_masukan.tanggal_terima', 'desc')
                   ->groupby('surat_masukan.id_pegawai')
                   ->get();
@@ -58,10 +59,11 @@ class SuratMasukanController extends Controller
         $getsuratmasukan = DB::table('surat_masukan')->select('surat_masukan.*','pegawai.id as id_pegawai','pegawai.nama_pegawai','skpd.id as id_skpd','skpd.nama_skpd')
                   ->leftJoin('pegawai', 'surat_masukan.id_pegawai', '=', 'pegawai.id')
                   ->leftJoin('skpd', 'pegawai.id_skpd', '=', 'skpd.id')
-                  ->where([
-                            ['surat_masukan.disposisi_bidang', '1'],
-                            ['surat_masukan.flag_approved', '1']
-                          ])
+                  ->where('surat_masukan.id_pegawai', '=', Auth::user()->id_pegawai)
+                  ->where(function($query) {
+                            $query->where('surat_masukan.disposisi_bidang', '1')
+                              ->orWhere('surat_masukan.flag_approved', '1');
+                          })
                   ->orderby('surat_masukan.tanggal_terima', 'desc')
                   ->groupby('surat_masukan.id_pegawai')
                   ->get();
@@ -69,10 +71,11 @@ class SuratMasukanController extends Controller
         $getsuratmasukan = DB::table('surat_masukan')->select('surat_masukan.*','pegawai.id as id_pegawai','pegawai.nama_pegawai','skpd.id as id_skpd','skpd.nama_skpd')
                   ->leftJoin('pegawai', 'surat_masukan.id_pegawai', '=', 'pegawai.id')
                   ->leftJoin('skpd', 'pegawai.id_skpd', '=', 'skpd.id')
-                  ->where([
-                            ['surat_masukan.disposisi_sekdis', '1'],
-                            ['surat_masukan.flag_approved', '1']
-                          ])
+                  ->where('surat_masukan.id_pegawai', '=', Auth::user()->id_pegawai)
+                  ->where(function($query) {
+                            $query->where('surat_masukan.disposisi_sekdis', '1')
+                              ->orWhere('surat_masukan.flag_approved', '1');
+                          })
                   ->orderby('surat_masukan.tanggal_terima', 'desc')
                   ->groupby('surat_masukan.id_pegawai')
                   ->get();
@@ -197,7 +200,7 @@ class SuratMasukanController extends Controller
         $set->disposisi_staff = $valstaff;
         $set->disposisi_bidang = $valbidang;
         $set->disposisi_sekdis = $valsekdis;
-        $set->catatan = trim($request->catatan)trim(;
+        $set->catatan = trim($request->catatan);
         $set->url_document = $photo_name;
         $set->save();
     

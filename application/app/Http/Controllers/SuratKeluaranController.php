@@ -45,10 +45,11 @@ class SuratKeluaranController extends Controller
           $getsuratkeluaran = DB::table('surat_keluaran')->select('surat_keluaran.*','pegawai.id as id_pegawai','pegawai.nama_pegawai','skpd.id as id_skpd','skpd.nama_skpd')
                   ->leftJoin('pegawai', 'surat_keluaran.id_pegawai', '=', 'pegawai.id')
                   ->leftJoin('skpd', 'pegawai.id_skpd', '=', 'skpd.id')
-                  ->where([
-                            ['surat_keluaran.disposisi_staff', '1'],
-                            ['surat_keluaran.flag_approved', '1']
-                          ])
+                  ->where('surat_keluaran.id_pegawai', '=', Auth::user()->id_pegawai)
+                  ->where(function($query) {
+                            $query->where('surat_keluaran.disposisi_staff', '1')
+                              ->orWhere('surat_keluaran.flag_approved', '1');
+                          })
                   ->orderby('surat_keluaran.tanggal_terima', 'desc')
                   ->groupby('surat_keluaran.id_pegawai')
                   ->get();
@@ -56,10 +57,11 @@ class SuratKeluaranController extends Controller
         $getsuratkeluaran = DB::table('surat_keluaran')->select('surat_keluaran.*','pegawai.id as id_pegawai','pegawai.nama_pegawai','skpd.id as id_skpd','skpd.nama_skpd')
                   ->leftJoin('pegawai', 'surat_keluaran.id_pegawai', '=', 'pegawai.id')
                   ->leftJoin('skpd', 'pegawai.id_skpd', '=', 'skpd.id')
-                  ->where([
-                            ['surat_keluaran.disposisi_bidang', '1'],
-                            ['surat_keluaran.flag_approved', '1']
-                          ])
+                  ->where('surat_keluaran.id_pegawai', '=', Auth::user()->id_pegawai)
+                  ->where(function($query) {
+                            $query->where('surat_keluaran.disposisi_bidang', '1')
+                              ->orWhere('surat_keluaran.flag_approved', '1');
+                          })
                   ->orderby('surat_keluaran.tanggal_terima', 'desc')
                   ->groupby('surat_keluaran.id_pegawai')
                   ->get();
@@ -67,10 +69,11 @@ class SuratKeluaranController extends Controller
         $getsuratkeluaran = DB::table('surat_keluaran')->select('surat_keluaran.*','pegawai.id as id_pegawai','pegawai.nama_pegawai','skpd.id as id_skpd','skpd.nama_skpd')
                   ->leftJoin('pegawai', 'surat_keluaran.id_pegawai', '=', 'pegawai.id')
                   ->leftJoin('skpd', 'pegawai.id_skpd', '=', 'skpd.id')
-                  ->where([
-                            ['surat_keluaran.disposisi_sekdis', '1'],
-                            ['surat_keluaran.flag_approved', '1']
-                          ])
+                  ->where('surat_keluaran.id_pegawai', '=', Auth::user()->id_pegawai)
+                  ->where(function($query) {
+                            $query->where('surat_keluaran.disposisi_sekdis', '1')
+                              ->orWhere('surat_keluaran.flag_approved', '1');
+                          })
                   ->orderby('surat_keluaran.tanggal_terima', 'desc')
                   ->groupby('surat_keluaran.id_pegawai')
                   ->get();

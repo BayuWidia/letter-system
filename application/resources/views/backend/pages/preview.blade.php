@@ -46,11 +46,15 @@
           SKPD : {{$getsurat->nama_skpd}}
           <hr/>
           Jabatan : {{$getsurat->nama_jabatan}}
-
         </div><!-- /.box-body -->
 
         <div class="box-footer">
+          @if($getsurat->url_document != "-")
           <span data-toggle="tooltip">
+            <a class="btn btn-warning btn-flat pull-left" href="{{ asset('\..\documents').'/'.$getsurat->url_document}}" download="{{$getsurat->url_document}}">Download Document</a>
+          </span>
+          @endif
+           <span data-toggle="tooltip">
             <a class="btn btn-info btn-flat pull-right" href="{{ URL::previous() }}">Kembali Kehalaman Sebelumnya</a>
           </span>
         </div><!-- /.box-footer -->
