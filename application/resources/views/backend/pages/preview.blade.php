@@ -26,7 +26,7 @@
             <img class="img-circle" src="{{ asset('/images/userdefault.png') }}" alt="user image">
             <span class="username"><a>{{$getsurat->nama_pegawai}}</a></span>
             <span class="description">
-              Nomor Surat : {{$getsurat->nomor_surat}}
+              <b>Nomor Surat</b> : {{$getsurat->nomor_surat}}
             </span>
           </div><!-- /.user-block -->
           <div class="box-tools">
@@ -35,13 +35,13 @@
         </div><!-- /.box-header -->
         <div class="box-body">
           <!-- post text -->
-          SKPD : {{$getsurat->nama_skpd}}
+          <b>SKPD</b> : {{$getsurat->nama_skpd}}
           <hr/>
-          Jabatan : {{$getsurat->nama_jabatan}}
+          <b>Jabatan</b> : {{$getsurat->nama_jabatan}}
           <hr/>
-          Perihal : {{$getsurat->perihal}}
+          <b>Perihal</b> : {{$getsurat->perihal}}
           <hr/>
-          Catatan : 
+          <b>Catatan</b> : 
           <textarea name="tanggapan" class="form-control" rows="5" cols="40" readonly="true" 
             style="border:1px solid #DD4B39;margin-top:5px;"><?php echo $getsurat->catatan ?></textarea>
         </div><!-- /.box-body -->
