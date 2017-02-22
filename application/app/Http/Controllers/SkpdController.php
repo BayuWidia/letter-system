@@ -51,7 +51,8 @@ class SkpdController extends Controller
   public function delete($id)
   {
     $set = Skpd::find($id);
-    $set->delete();
+    $set->flag_skpd = 0;
+    $set->save();
 
     return redirect()->route('skpd.index')->with('message', 'Berhasil menghapus skpd.');
   }

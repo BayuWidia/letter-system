@@ -49,7 +49,8 @@ class JabatanController extends Controller
   public function delete($id)
   {
     $set = Jabatan::find($id);
-    $set->delete();
+    $set->flag_jabatan = 0;
+    $set->save();
 
     return redirect()->route('jabatan.index')->with('message', 'Berhasil menghapus jabatan.');
   }

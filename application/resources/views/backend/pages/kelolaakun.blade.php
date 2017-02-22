@@ -262,11 +262,11 @@
                         <i class="fa fa-edit"></i>
                       </a>
                     </span>
-                    <span data-toggle="tooltip" title="Hapus">
+                    <!-- <span data-toggle="tooltip" title="Hapus">
                       <a href="#" class="btn btn-xs btn-danger btn-flat hapus" data-toggle="modal" data-target="#modaldelete" data-value="{{$key->id}}">
                         <i class="fa fa-remove"></i>
                       </a>
-                    </span>
+                    </span> -->
                   </td>
                 </tr>
                 <?php $i++; ?>

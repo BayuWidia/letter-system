@@ -137,7 +137,7 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer clearfix">
-          <a href="{{url('admin/lihat-client')}}" class="btn btn-sm btn-info btn-flat pull-right">Lihat Semua Surat Masukan</a>
+          <a href="{{url('admin/lihat-surat-masukan-all')}}" class="btn btn-sm btn-info btn-flat pull-right">Lihat Semua Surat Masukan</a>
         </div>
         <!-- /.box-footer -->
       </div>
@@ -177,7 +177,7 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer clearfix">
-          <a href="{{url('admin/lihat-client')}}" class="btn btn-sm btn-info btn-flat pull-right">Lihat Semua Surat Keluaran</a>
+          <a href="{{url('admin/lihat-surat-keluaran-all')}}" class="btn btn-sm btn-info btn-flat pull-right">Lihat Semua Surat Keluaran</a>
         </div>
         <!-- /.box-footer -->
       </div>

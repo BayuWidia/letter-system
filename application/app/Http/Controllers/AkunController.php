@@ -43,7 +43,7 @@ class AkunController extends Controller
     $set->level = $request->level;
     $set->password = Hash::make($request->password);
     $set->url_foto = $photo_name;
-    $set->activated = $request->activated;
+    $set->activated = 1;
     $set->actor = Auth::user()->id;
     $set->disposisi = $request->disposisi;
     $set->save();

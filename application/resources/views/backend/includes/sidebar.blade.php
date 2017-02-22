@@ -74,6 +74,7 @@
         <li><a href="{{url('admin/lihat-surat-keluaran-all')}}"><i class="fa fa-circle-o"></i> Semua Surat Keluaran</a></li>
       </ul>
     </li>
+    @if(Auth::user()->level=="1" || Auth::user()->level=="2")
     <li class="treeview">
       <a href="#" id="colortreemenulihref">
         <i class="fa fa-user-plus"></i>
@@ -104,6 +105,8 @@
         <li><a href="{{url('admin/kelola-skpd')}}"><i class="fa fa-circle-o"></i> Kelola Skpd</a></li>
       </ul>
     </li>
+    @endif
+    @if(Auth::user()->level=="1")
     <li class="treeview">
       <a href="#" id="colortreemenulihref">
         <i class="fa fa-users"></i>
@@ -114,6 +117,6 @@
         <li><a href="{{url('admin/kelola-akun')}}"><i class="fa fa-circle-o"></i> Kelola Akun</a></li>
       </ul>
     </li>
-    
+    @endif
   </ul>
 </section>

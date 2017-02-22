@@ -103,7 +103,7 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label">Sifat Surat</label>
                 <div class="col-sm-5">
-                  <select class="form-control select2" name="sifat_surat">
+                  <select class="form-control" name="sifat_surat">
                     <option>-- Pilih --</option>
                         @if(isset($editproject))
                             @if($editproject->sifat_surat=='Rahasia')

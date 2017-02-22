@@ -30,7 +30,7 @@ class SuratKeluaranController extends Controller
                   ->leftJoin('pegawai', 'surat_keluaran.id_pegawai', '=', 'pegawai.id')
                   ->leftJoin('skpd', 'pegawai.id_skpd', '=', 'skpd.id')
                   ->leftJoin('jabatan', 'pegawai.id_jabatan', '=', 'jabatan.id')
-                  ->where('surat_keluaran.actor', Auth::user()->id_pegawai)
+                  ->where('surat_keluaran.id_user', Auth::user()->id_pegawai)
                   ->orderby('surat_keluaran.created_at', 'desc')
                   ->groupby('surat_keluaran.id_pegawai')
                   ->get();
@@ -49,7 +49,7 @@ class SuratKeluaranController extends Controller
                             ['surat_keluaran.disposisi_staff', '1'],
                             ['surat_keluaran.flag_approved', '1']
                           ])
-                  ->orderby('surat_keluaran.created_at', 'desc')
+                  ->orderby('surat_keluaran.tanggal_terima', 'desc')
                   ->groupby('surat_keluaran.id_pegawai')
                   ->get();
       } else if (Auth::user()->disposisi=="2") {
@@ -60,7 +60,7 @@ class SuratKeluaranController extends Controller
                             ['surat_keluaran.disposisi_bidang', '1'],
                             ['surat_keluaran.flag_approved', '1']
                           ])
-                  ->orderby('surat_keluaran.created_at', 'desc')
+                  ->orderby('surat_keluaran.tanggal_terima', 'desc')
                   ->groupby('surat_keluaran.id_pegawai')
                   ->get();
       } else if (Auth::user()->disposisi=="3") {
@@ -71,7 +71,7 @@ class SuratKeluaranController extends Controller
                             ['surat_keluaran.disposisi_sekdis', '1'],
                             ['surat_keluaran.flag_approved', '1']
                           ])
-                  ->orderby('surat_keluaran.created_at', 'desc')
+                  ->orderby('surat_keluaran.tanggal_terima', 'desc')
                   ->groupby('surat_keluaran.id_pegawai')
                   ->get();
       }
@@ -93,7 +93,7 @@ class SuratKeluaranController extends Controller
      $file = $request->file('upload_document');
       if($file != null)
       {
-        $photo_name = Auth::user()->pegawai_id.'-'.$request->tanggal_surat.'-'.$request->nomor_surat.'.' . $file->getClientOriginalExtension();
+        $photo_name = Auth::user()->id_pegawai.'-'.$request->tanggal_surat.'-'.$request->nomor_surat.'.' . $file->getClientOriginalExtension();
         $file->move('documents/', $photo_name);
       }else{
         $photo_name = "-";
@@ -101,7 +101,7 @@ class SuratKeluaranController extends Controller
       }
 
       $new = new SuratKeluaran;
-      $new->id_pegawai = $request->pegawai_id;
+      $new->id_pegawai = $request->id_pegawai;
       $new->id_user = Auth::user()->id;
       $new->sifat_surat = $request->sifat_surat;
       $new->tanggal_surat = $request->tanggal_surat;
@@ -138,7 +138,7 @@ class SuratKeluaranController extends Controller
       $new->save();
 
 
-    return redirect()->route('surat.keluaran.tambah')->with('message', 'Berhasil menambahkan Surat Keluaran.');
+    return redirect()->route('surat.keluaran.lihat')->with('message', 'Berhasil menambahkan Surat Keluaran.');
   }
 
   public function edit($id)
@@ -159,7 +159,7 @@ class SuratKeluaranController extends Controller
      $file = $request->file('upload_document');
       if($file != null)
       {
-        $photo_name = Auth::user()->pegawai_id.'-'.$request->tanggal_surat.'-'.$request->nomor_surat.'.' . $file->getClientOriginalExtension();
+        $photo_name = Auth::user()->id_pegawai.'-'.$request->tanggal_surat.'-'.$request->nomor_surat.'.' . $file->getClientOriginalExtension();
         $file->move('documents/', $photo_name);
       }else{
         $photo_name = "-";
@@ -167,7 +167,7 @@ class SuratKeluaranController extends Controller
       }
 
         $set = SuratKeluaran::find($request->id);
-        $set->id_pegawai = $request->pegawai_id;
+        $set->id_pegawai = $request->id_pegawai;
         $set->id_user = Auth::user()->id;
         $set->sifat_surat = $request->sifat_surat;
         $set->tanggal_surat = $request->tanggal_surat;
@@ -200,11 +200,10 @@ class SuratKeluaranController extends Controller
         $set->disposisi_sekdis = $valsekdis;
         $set->catatan = $request->catatan;
         $set->url_document = $photo_name;
-        $set->flag_approved = 0;
         $set->save();
     
 
-    return redirect()->route('surat.keluaran.tambah')->with('message', 'Berhasil mengubah Surat Keluaran.');
+    return redirect()->route('surat.keluaran.lihat')->with('message', 'Berhasil mengubah Surat Keluaran.');
   }
 
   public function flagapproved($id)
