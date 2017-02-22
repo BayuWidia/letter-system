@@ -22,9 +22,9 @@ class SkpdController extends Controller
     // dd($request);
       $set = new Skpd;
       $set->actor = Auth::user()->id;
-      $set->nama_skpd = $request->nama_skpd;
-      $set->singkatan_skpd = $request->singkatan_skpd;
-      $set->keterangan_skpd = $request->keterangan_skpd;
+      $set->nama_skpd = trim($request->nama_skpd);
+      $set->singkatan_skpd = trim($request->singkatan_skpd);
+      $set->keterangan_skpd = trim($request->keterangan_skpd);
       $set->flag_skpd = $request->flag_skpd;
       $set->save();
 
@@ -40,9 +40,9 @@ class SkpdController extends Controller
   public function edit(Request $request)
   {
       $set = Skpd::find($request->id);
-      $set->nama_skpd = $request->nama_skpd;
-      $set->singkatan_skpd = $request->singkatan_skpd;
-      $set->keterangan_skpd = $request->keterangan_skpd;
+      $set->nama_skpd = trim($request->nama_skpd);
+      $set->singkatan_skpd = trim($request->singkatan_skpd);
+      $set->keterangan_skpd = trim($request->keterangan_skpd);
       $set->flag_skpd = $request->flag_skpd;
       $set->save();
 

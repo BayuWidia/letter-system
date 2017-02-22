@@ -49,8 +49,8 @@ class PegawaiController extends Controller
         $set->id_skpd = $request->id_skpd;
         $set->id_jabatan = $request->id_jabatan;
 
-        $set->nama_pegawai = $request->nama_pegawai;
-        $set->nip = $request->nip;
+        $set->nama_pegawai = trim($request->nama_pegawai);
+        $set->nip = trim($request->nip);
         $set->url_foto = $photo_name;
         $set->flag_pegawai = 1;
         $set->actor = Auth::user()->id;
@@ -60,8 +60,8 @@ class PegawaiController extends Controller
         $set->id_skpd = $request->id_skpd;
         $set->id_jabatan = $request->id_jabatan;
 
-        $set->nama_pegawai = $request->nama_pegawai;
-        $set->nip = $request->nip;
+        $set->nama_pegawai = trim($request->nama_pegawai);
+        $set->nip = trim($request->nip);
         $set->flag_pegawai = 1;
         $set->actor = Auth::user()->id;
         $set->save();
@@ -98,8 +98,8 @@ class PegawaiController extends Controller
         $set->id_skpd = $request->id_skpd;
         $set->id_jabatan = $request->id_jabatan;
 
-        $set->nama_pegawai = $request->nama_pegawai;
-        $set->nip = $request->nip;
+        $set->nama_pegawai = trim($request->nama_pegawai);
+        $set->nip = trim($request->nip);
         $set->url_foto = $photo_name;
         $set->flag_pegawai = 1;
         $set->save();
@@ -108,8 +108,8 @@ class PegawaiController extends Controller
         $set->id_skpd = $request->id_skpd;
         $set->id_jabatan = $request->id_jabatan;
 
-        $set->nama_pegawai = $request->nama_pegawai;
-        $set->nip = $request->nip;
+        $set->nama_pegawai = trim($request->nama_pegawai);
+        $set->nip = trim($request->nip);
         $set->flag_pegawai = 1;
         $set->save();
     }

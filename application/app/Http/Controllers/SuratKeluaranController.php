@@ -93,7 +93,7 @@ class SuratKeluaranController extends Controller
      $file = $request->file('upload_document');
       if($file != null)
       {
-        $photo_name = Auth::user()->id_pegawai.'-'.$request->tanggal_surat.'-'.$request->nomor_surat.'.' . $file->getClientOriginalExtension();
+        $photo_name = Auth::user()->id_pegawai.'-'.date('Y-m-d').'-'.$request->nomor_surat.'.' . $file->getClientOriginalExtension();
         $file->move('documents/', $photo_name);
       }else{
         $photo_name = "-";
@@ -104,7 +104,7 @@ class SuratKeluaranController extends Controller
       $new->id_pegawai = $request->id_pegawai;
       $new->id_user = Auth::user()->id;
       $new->sifat_surat = $request->sifat_surat;
-      $new->tanggal_surat = $request->tanggal_surat;
+      $new->tanggal_surat = date('Y-m-d');
       $new->nomor_surat = $request->nomor_surat;
       $new->perihal = $request->perihal;
 
@@ -159,7 +159,7 @@ class SuratKeluaranController extends Controller
      $file = $request->file('upload_document');
       if($file != null)
       {
-        $photo_name = Auth::user()->id_pegawai.'-'.$request->tanggal_surat.'-'.$request->nomor_surat.'.' . $file->getClientOriginalExtension();
+        $photo_name = Auth::user()->id_pegawai.'-'.date('Y-m-d').'-'.$request->nomor_surat.'.' . $file->getClientOriginalExtension();
         $file->move('documents/', $photo_name);
       }else{
         $photo_name = "-";
@@ -170,7 +170,7 @@ class SuratKeluaranController extends Controller
         $set->id_pegawai = $request->id_pegawai;
         $set->id_user = Auth::user()->id;
         $set->sifat_surat = $request->sifat_surat;
-        $set->tanggal_surat = $request->tanggal_surat;
+        $set->tanggal_surat = date('Y-m-d');
         $set->nomor_surat = $request->nomor_surat;
         $set->perihal = $request->perihal;
 
@@ -212,10 +212,12 @@ class SuratKeluaranController extends Controller
     if($set->flag_approved=="1") {
       $set->tanggal_terima = date('Y-m-d');
       $set->flag_approved = 0;
+      $set->id_approved = Auth::user()->id;
       $set->save();
     } elseif ($set->flag_approved=="0") {
       $set->tanggal_terima = date('Y-m-d');
       $set->flag_approved = 1;
+      $set->id_approved = Auth::user()->id;
       $set->save();
     }
 

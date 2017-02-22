@@ -38,8 +38,8 @@ class AkunController extends Controller
 
     $set = new User;
     $set->id_pegawai = $request->id_pegawai;
-    $set->name = $request->name;
-    $set->email = $request->email;
+    $set->name = trim($request->name);
+    $set->email = trim($request->email);
     $set->level = $request->level;
     $set->password = Hash::make($request->password);
     $set->url_foto = $photo_name;
@@ -74,7 +74,7 @@ class AkunController extends Controller
   {
 
     $set = User::find($request->id);
-    $set->name = $request->name;
+    $set->name = trim($request->name);
     $set->level = $request->level;
     $set->activated = $request->activated;
     $set->actor = Auth::user()->id;

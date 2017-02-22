@@ -1,0 +1,18 @@
+==================== AKSES LOGIN ======================
+
+SUPER ADMIN
+	STAFF	: yanisutisna@gmail.com, bangbangismail@gmail.com
+	BIDANG	: somaatmaja@gmail.com
+	SEKDIS	: bayuwidyas@gmail.com
+=======================================================	
+ADMINISTRATOR
+	STAFF	: ariamustofa@gmail.com
+	BIDANG	: lilismulyani@gmail.com
+	SEKDIS	: achirguntur@gmail.com
+=======================================================	
+USER
+	STAFF	: gunawan@gmail.com	
+	BIDANG	: cucurukmini@gmail.com
+	SEKDIS	: nuraesih@gmail.com
+=======================================================		
+PASSWORD	: 0987654321

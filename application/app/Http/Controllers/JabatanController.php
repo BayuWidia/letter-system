@@ -22,8 +22,8 @@ class JabatanController extends Controller
     // dd($request);
       $set = new Jabatan;
       $set->actor = Auth::user()->id;
-      $set->nama_jabatan = $request->nama_jabatan;
-      $set->keterangan_jabatan = $request->keterangan_jabatan;
+      $set->nama_jabatan = trim($request->nama_jabatan);
+      $set->keterangan_jabatan = trim($request->keterangan_jabatan);
       $set->flag_jabatan = $request->flag_jabatan;
       $set->save();
 
@@ -39,8 +39,8 @@ class JabatanController extends Controller
   public function edit(Request $request)
   {
       $set = Jabatan::find($request->id);
-      $set->nama_jabatan = $request->nama_jabatan;
-      $set->keterangan_jabatan = $request->keterangan_jabatan;
+      $set->nama_jabatan = trim($request->nama_jabatan);
+      $set->keterangan_jabatan = trim($request->keterangan_jabatan);
       $set->flag_jabatan = $request->flag_jabatan;
       $set->save();
 

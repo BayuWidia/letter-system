@@ -106,8 +106,8 @@ class SuratMasukanController extends Controller
       $new->id_pegawai = $request->id_pegawai;
       $new->id_user = Auth::user()->id;
       $new->tanggal_surat = date('Y-m-d');
-      $new->nomor_surat = $request->nomor_surat;
-      $new->perihal = $request->perihal;
+      $new->nomor_surat = trim($request->nomor_surat);
+      $new->perihal = trim($request->perihal);
 
       $valstaff="";
       if($request->disposisi_staff=="") {
@@ -133,7 +133,7 @@ class SuratMasukanController extends Controller
       $new->disposisi_staff = $valstaff;
       $new->disposisi_bidang = $valbidang;
       $new->disposisi_sekdis = $valsekdis;
-      $new->catatan = $request->catatan;
+      $new->catatan = trim($request->catatan);
       $new->url_document = $photo_name;
       $new->flag_approved = 0;
       $new->save();
@@ -170,8 +170,8 @@ class SuratMasukanController extends Controller
         $set = SuratMasukan::find($request->id);
         $set->id_pegawai = $request->id_pegawai;
         $set->id_user = Auth::user()->id;
-        $set->nomor_surat = $request->nomor_surat;
-        $set->perihal = $request->perihal;
+        $set->nomor_surat = trim($request->nomor_surat);
+        $set->perihal = trim($request->perihal);
 
         $valstaff="";
         if($request->disposisi_staff=="") {
@@ -197,7 +197,7 @@ class SuratMasukanController extends Controller
         $set->disposisi_staff = $valstaff;
         $set->disposisi_bidang = $valbidang;
         $set->disposisi_sekdis = $valsekdis;
-        $set->catatan = $request->catatan;
+        $set->catatan = trim($request->catatan)trim(;
         $set->url_document = $photo_name;
         $set->save();
     
@@ -211,10 +211,12 @@ class SuratMasukanController extends Controller
     if($set->flag_approved=="1") {
       $set->tanggal_terima = date('Y-m-d');
       $set->flag_approved = 0;
+      $set->id_approved = Auth::user()->id;
       $set->save();
     } elseif ($set->flag_approved=="0") {
       $set->tanggal_terima = date('Y-m-d');
       $set->flag_approved = 1;
+      $set->id_approved = Auth::user()->id;
       $set->save();
     }
 
