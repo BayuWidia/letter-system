@@ -137,9 +137,7 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer clearfix">
-        @if(Auth::user()->level=="1" || Auth::user()->level=="2")
-          <a href="{{url('admin/lihat-surat-masukan')}}" class="btn btn-sm btn-info btn-flat pull-right">Lihat Semua Surat Masukan</a>
-        @elseif(Auth::user()->level=="3")
+        @if(Auth::user()->level=="3")
           <a href="{{url('admin/lihat-surat-masukan-all')}}" class="btn btn-sm btn-info btn-flat pull-right">Lihat Semua Surat Masukan</a>
         @endif
         </div>
@@ -181,9 +179,7 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer clearfix">
-          @if(Auth::user()->level=="1" || Auth::user()->level=="2")
-          <a href="{{url('admin/lihat-surat-keluaran')}}" class="btn btn-sm btn-info btn-flat pull-right">Lihat Semua Surat Keluaran</a>
-          @elseif(Auth::user()->level=="3")
+          @if(Auth::user()->level=="3")
             <a href="{{url('admin/lihat-surat-keluaran-all')}}" class="btn btn-sm btn-info btn-flat pull-right">Lihat Semua Surat Keluaran</a>
           @endif
         </div>
