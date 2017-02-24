@@ -88,7 +88,7 @@
     </div>
 
     <div class="col-md-12">
-      <div class="box box-danger">
+      <div class="box box-warning">
         <div class="box-header">
           <a href="{{route('surat.masukan.tambah')}}" class="btn bg-blue btn-flat margin">Tambah Surat Masukan</a>
         </div><!-- /.box-header -->

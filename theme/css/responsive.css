@@ -397,8 +397,8 @@
 	}
 	.navbar-toggle{
 		position:absolute;
-		top:0;
-		right:0;
+		top:-53px;
+		right:50px;
 	}
 	.navbar-brand{
 		padding:13px 15px;
@@ -509,6 +509,10 @@
 		right: 15px;
 	}
 
+	#latest-news-promosi .owl-controls .owl-pagination {
+		top: 14px;
+		right: 15px;
+	}
 	.post-content{
 		padding:30px 25px;
 	}
@@ -724,7 +728,7 @@
 		z-index: 100;
 	}
 	.page .navbar-toggle {
-		right:100px;
+		right:10px;
 		margin-top:8px;
 	}
 	.page .navbar-brand {

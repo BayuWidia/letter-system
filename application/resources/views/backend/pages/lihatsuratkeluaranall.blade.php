@@ -20,7 +20,7 @@
 @section('content')
   <div class="row">
     <div class="col-md-12">
-      <div class="box box-danger">
+      <div class="box box-warning">
         <div class="box-body">
           <table id="tabelinfo" class="table table-hover">
             <thead>

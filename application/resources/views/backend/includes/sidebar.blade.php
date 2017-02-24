@@ -1,8 +1,3 @@
-<style type="text/css">
-  #colortreemenulihref{
-      color: #000000;
-    }
-</style>
 <section class="sidebar">
   <!-- Sidebar user panel -->
   <div class="user-panel">
@@ -14,14 +9,14 @@
       @endif
     </div>
     <div class="pull-left info">
-      <p style="color:black">
+      <p >
         @if(Auth::user()->name=="")
           {{Auth::user()->email}}
         @else
           {{Auth::user()->name}}
         @endif
       </p>
-      <a href="#" style="color:black"><i class="fa fa-circle text-success"></i>
+      <a href="#"><i class="fa fa-circle text-success"></i>
         {{Auth::user()->email}}
       </a>
     </div>
@@ -40,12 +35,12 @@
   <ul class="sidebar-menu">
     <li class="header">MAIN NAVIGATION</li>
     <li>
-      <a href="{{url('backend/dashboard')}}" id="colortreemenulihref">
+      <a href="{{url('backend/dashboard')}}" >
         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
       </a>
     </li>
     <li class="treeview">
-      <a href="#" id="colortreemenulihref">
+      <a href="#" >
         <i class="fa fa-envelope"></i>
         <span>Manajemen Surat Masukan</span>
         <i class="fa fa-angle-left pull-right"></i>
@@ -60,7 +55,7 @@
       </ul>
     </li>
     <li class="treeview">
-      <a href="#" id="colortreemenulihref">
+      <a href="#" >
         <i class="fa fa-envelope-o"></i>
         <span>Manajemen Surat Keluaran</span>
         <i class="fa fa-angle-left pull-right"></i>
@@ -76,7 +71,7 @@
     </li>
     @if(Auth::user()->level=="1" || Auth::user()->level=="2")
     <li class="treeview">
-      <a href="#" id="colortreemenulihref">
+      <a href="#" >
         <i class="fa fa-user-plus"></i>
         <span>Manajemen Pegawai</span>
         <i class="fa fa-angle-left pull-right"></i>
@@ -86,7 +81,7 @@
       </ul>
     </li>
     <li class="treeview">
-      <a href="#" id="colortreemenulihref">
+      <a href="#" >
         <i class="fa fa-mortar-board"></i>
         <span>Kelola Jabatan</span>
         <i class="fa fa-angle-left pull-right"></i>
@@ -96,7 +91,7 @@
       </ul>
     </li>
     <li class="treeview">
-      <a href="#" id="colortreemenulihref">
+      <a href="#" >
         <i class="fa fa-bank"></i>
         <span>Kelola Skpd</span>
         <i class="fa fa-angle-left pull-right"></i>
@@ -108,7 +103,7 @@
     @endif
     @if(Auth::user()->level=="1")
     <li class="treeview">
-      <a href="#" id="colortreemenulihref">
+      <a href="#" >
         <i class="fa fa-users"></i>
         <span>Manajemen Akun</span>
         <i class="fa fa-angle-left pull-right"></i>

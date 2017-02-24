@@ -70,7 +70,7 @@
     </div>
 
     <div class="col-md-12">
-      <div class="box box-success">
+      <div class="box box-warning">
         <div class="box-header">
           <a href="{{route('pegawai.tambah')}}" class="btn bg-blue btn-flat margin">Tambah Pegawai</a>
         </div><!-- /.box-header -->

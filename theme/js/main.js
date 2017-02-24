@@ -30,7 +30,7 @@ jQuery(function ($) {
 		if(windowWidth > 1000 ){
         $(window).scroll (function () {
             var sT = $(this).scrollTop();
-				if (sT >= 120) {
+				if (sT >= 250) {
 					$('.homepage .navbar, .homepage-two.fixed-nav .navbar').addClass('sticky-nav')
           $('#logocustom').attr('src', 'images/logo-kecil-2.png')
 				}else {
@@ -44,7 +44,7 @@ jQuery(function ($) {
 		if(windowWidth > 1000 ){
         $(window).scroll (function () {
             var sT = $(this).scrollTop();
-				if (sT >= 120) {
+				if (sT >= 250) {
 					$('.homepage #menubar, .homepage-two.fixed-nav #navigation').removeClass('container')
 					$('.homepage #menubar, .homepage-two.fixed-nav #navigation').addClass('container-fluid')
 				}else {
@@ -178,6 +178,13 @@ jQuery(function ($) {
 
   $("#latest-news-video").owlCarousel({
     items : 1,
+    pagination	: true,
+    autoPlay	: true,
+    stopOnHover	: true,
+  });
+
+  $("#latest-news-promosi").owlCarousel({
+    items : 4,
     pagination	: true,
     autoPlay	: true,
     stopOnHover	: true,

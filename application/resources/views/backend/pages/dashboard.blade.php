@@ -103,7 +103,7 @@
 
   <div class="row">
     <div class="col-md-6">
-      <div class="box box-success">
+      <div class="box box-warning">
         <div class="box-header with-border">
           <h3 class="box-title">Surat Masukan</h3>
         </div>
@@ -145,7 +145,7 @@
       </div>
     </div>
     <div class="col-md-6">
-      <div class="box box-success">
+      <div class="box box-warning">
         <div class="box-header with-border">
           <h3 class="box-title">Surat Keluaran</h3>
         </div>
